@@ -1,0 +1,11 @@
+<h4>Latest messages</h4>
+
+<table>
+	<?php foreach($messages as $message): ?>
+	<tr>
+		<td><?=$message["username"]?></td>
+		<td><?=$message["date"]?></td>
+		<td><?=$message["content"]?></td>
+	</tr>
+	<?php endforeach ?>
+</table>

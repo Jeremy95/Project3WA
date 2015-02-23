@@ -1,0 +1,38 @@
+<!--/**-->
+<!-- * Created by PhpStorm.-->
+<!-- * User: wap19-->
+<!-- * Date: 30/01/15-->
+<!-- * Time: 14:42-->
+<!-- */-->
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <script src="js/utilities.js"></script>
+    <title></title>
+</head>
+<body>
+
+<h1>Traducteur</h1>
+<p><?= $message; ?></p>
+
+<form action="translate.php" method="post">
+    <label for="word">Mon mot</label>
+    <input type="text" name="word" id="word"/>
+
+    <label for="direction"></label>
+    <select name="direction" id="direction">
+        <option value=""></option>
+        <option value="toFrench">Français</option>
+        <option value="toEnglish">English</option>
+    </select>
+    <input name="submit" type="submit" value="Traduire"/>
+</form>
+
+
+
+</body>
+</html>

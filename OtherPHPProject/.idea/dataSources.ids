@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - classicmodels@localhost" uuid="a927b8a5-8787-432a-90ed-bd81e2b48c82">
+    <database-info product="MySQL" version="5.5.40-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="classicmodels"/>
+    <table name="customers" schema="" catalog="classicmodels" type="TABLE">
+      <column name="customerNumber" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="customerName" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="contactLastName" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="contactFirstName" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="addressLine1" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="addressLine2" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="city" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="state" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="postalCode" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="country" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="salesRepEmployeeNumber" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="creditLimit" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="customerNumber"/>
+      <foreign-key name="customers_ibfk_1" columns="salesRepEmployeeNumber" ref-table="employees" ref-schema="" ref-catalog="classicmodels" ref-columns="employeeNumber" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="orders_ibfk_1" table="orders" schema="" catalog="classicmodels" columns="customerNumber"/>
+      <exported-key name="payments_ibfk_1" table="payments" schema="" catalog="classicmodels" columns="customerNumber"/>
+    </table>
+    <table name="employees" schema="" catalog="classicmodels" type="TABLE">
+      <column name="employeeNumber" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="lastName" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="firstName" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="extension" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="officeCode" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="reportsTo" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="jobTitle" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="employeeNumber"/>
+      <foreign-key name="employees_ibfk_2" columns="officeCode" ref-table="offices" ref-schema="" ref-catalog="classicmodels" ref-columns="officeCode" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="employees_ibfk_1" columns="reportsTo" ref-table="employees" ref-schema="" ref-catalog="classicmodels" ref-columns="employeeNumber" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="customers_ibfk_1" table="customers" schema="" catalog="classicmodels" columns="salesRepEmployeeNumber"/>
+      <exported-key name="employees_ibfk_1" table="employees" schema="" catalog="classicmodels" columns="reportsTo"/>
+    </table>
+    <table name="offices" schema="" catalog="classicmodels" type="TABLE">
+      <column name="officeCode" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="city" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="addressLine1" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="addressLine2" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="state" sqlType="VARCHAR" precision="50" scale="0" nullable="true" jdbcType="12"/>
+      <column name="country" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="postalCode" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <column name="territory" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="officeCode"/>
+      <exported-key name="employees_ibfk_2" table="employees" schema="" catalog="classicmodels" columns="officeCode"/>
+    </table>
+    <table name="orderdetails" schema="" catalog="classicmodels" type="TABLE">
+      <column name="orderNumber" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="productCode" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <column name="quantityOrdered" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="priceEach" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="orderLineNumber" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="orderNumber,productCode"/>
+      <foreign-key name="orderdetails_ibfk_2" columns="productCode" ref-table="products" ref-schema="" ref-catalog="classicmodels" ref-columns="productCode" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="orderdetails_ibfk_1" columns="orderNumber" ref-table="orders" ref-schema="" ref-catalog="classicmodels" ref-columns="orderNumber" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="orders" schema="" catalog="classicmodels" type="TABLE">
+      <column name="orderNumber" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="orderDate" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="requiredDate" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="shippedDate" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="status" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <column name="comments" sqlType="TEXT" precision="65535" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="customerNumber" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="orderNumber"/>
+      <foreign-key name="orders_ibfk_1" columns="customerNumber" ref-table="customers" ref-schema="" ref-catalog="classicmodels" ref-columns="customerNumber" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="orderdetails_ibfk_1" table="orderdetails" schema="" catalog="classicmodels" columns="orderNumber"/>
+    </table>
+    <table name="payments" schema="" catalog="classicmodels" type="TABLE">
+      <column name="customerNumber" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="checkNumber" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="paymentDate" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="amount" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="customerNumber,checkNumber"/>
+      <foreign-key name="payments_ibfk_1" columns="customerNumber" ref-table="customers" ref-schema="" ref-catalog="classicmodels" ref-columns="customerNumber" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="productlines" schema="" catalog="classicmodels" type="TABLE">
+      <column name="productLine" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="textDescription" sqlType="VARCHAR" precision="4000" scale="0" nullable="true" jdbcType="12"/>
+      <column name="htmlDescription" sqlType="MEDIUMTEXT" precision="16777215" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="image" sqlType="MEDIUMBLOB" precision="16777215" scale="0" nullable="true" jdbcType="-4"/>
+      <primary-key name="PRIMARY" columns="productLine"/>
+      <exported-key name="products_ibfk_1" table="products" schema="" catalog="classicmodels" columns="productLine"/>
+    </table>
+    <table name="products" schema="" catalog="classicmodels" type="TABLE">
+      <column name="productCode" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <column name="productName" sqlType="VARCHAR" precision="70" scale="0" nullable="false" jdbcType="12"/>
+      <column name="productLine" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="productScale" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="productVendor" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="productDescription" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="quantityInStock" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5"/>
+      <column name="buyPrice" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="MSRP" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <primary-key name="PRIMARY" columns="productCode"/>
+      <foreign-key name="products_ibfk_1" columns="productLine" ref-table="productlines" ref-schema="" ref-catalog="classicmodels" ref-columns="productLine" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="orderdetails_ibfk_2" table="orderdetails" schema="" catalog="classicmodels" columns="productCode"/>
+    </table>
+  </data-source>
+  <data-source name="MySQL - chat@localhost" uuid="c5d7cddd-4a05-47c6-b053-c305c2a16f6e">
+    <database-info product="MySQL" version="5.5.40-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="chat"/>
+    <table name="message" schema="" catalog="chat" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="id_author" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="content" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="date" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="users" schema="" catalog="chat" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+  </data-source>
+  <data-source name="MySQL - classroom@localhost" uuid="d691d6d5-fc55-4d0d-a5ca-9cc7efba4b1c">
+    <database-info product="MySQL" version="5.5.40-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="classroom"/>
+    <table name="city" schema="" catalog="classroom" type="TABLE">
+      <column name="id" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5" autoIncrement="true"/>
+      <column name="department" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="postal_code" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="population" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4"/>
+      <column name="surface" sqlType="MEDIUMINT UNSIGNED" precision="8" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_CITY_DEPARTEMENT" columns="department" ref-table="departement" ref-schema="" ref-catalog="classroom" ref-columns="number" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="FK_STUDENT_CITY" table="student" schema="" catalog="classroom" columns="city_id"/>
+    </table>
+    <table name="departement" schema="" catalog="classroom" type="TABLE">
+      <column name="number" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="region_id" sqlType="VARCHAR" precision="2" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="CHAR" precision="32" scale="0" nullable="false" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="number"/>
+      <foreign-key name="FK_DEPARTEMENT_REGION" columns="region_id" ref-table="region" ref-schema="" ref-catalog="classroom" ref-columns="number" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="FK_CITY_DEPARTEMENT" table="city" schema="" catalog="classroom" columns="department"/>
+      <index name="REGION" unique="false" columns="region_id"/>
+    </table>
+    <table name="region" schema="" catalog="classroom" type="TABLE">
+      <column name="number" sqlType="VARCHAR" precision="2" scale="0" nullable="false" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="number"/>
+      <exported-key name="FK_DEPARTEMENT_REGION" table="departement" schema="" catalog="classroom" columns="region_id"/>
+    </table>
+    <table name="student" schema="" catalog="classroom" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="birthday" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="city_id" sqlType="SMALLINT UNSIGNED" precision="5" scale="0" nullable="false" jdbcType="5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_STUDENT_CITY" columns="city_id" ref-table="city" ref-schema="" ref-catalog="classroom" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="CITY" unique="false" columns="city_id"/>
+    </table>
+  </data-source>
+</component>

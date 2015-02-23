@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/utilities.js"></script>
+    <title></title>
+</head>
+<body>
+    <!--<h1 id="titre">Titre de la page</h1>
+
+    <div id="div">
+        Contenu actuel
+    </div>
+
+    <p>
+        contenu actuel
+    </p>-->
+
+    <button id="greenToRed">vert > rouge</button>
+    <button id="blueToGreen">bleu > vert</button>
+    <button id="redToBlue">rouge > bleu</button>
+
+    <div id="date">
+
+    </div>
+
+    <button id="stopTimer">STOP CE TIMER !</button>
+
+    <script>
+
+        /*var elem = document.getElementById("titre");
+        var elemPList = document.getElementsByTagName('p');
+        var elemDiv = document.getElementById("div");
+        console.log(elem);
+        elem.innerHTML = "Titre modifié en javascript";
+
+        for(var i = 0; i < elemPList.length; i++)
+        {
+            var save = elemPList[i].innerHTML;
+            elemPList[i].innerHTML = save + "contenu ajouté ";
+        }
+
+        var save = elemDiv.innerHTML;
+        elemDiv.innerHTML = save + "contenu ajouté";
+
+        elemDiv.classList.toggle("red");*/
+
+        /*var demandeValeur = requestInteger("Inserer une valeur", 1, 10000);
+        for(var i = 0; i < demandeValeur; i++)
+        {
+            var tab = [];
+            tab[i] = document.write("<p>Bonjour</p>");
+
+            var elemPList = document.getElementsByTagName('p');
+
+        }
+
+        for(var y =0; y < elemPList.length; y++)
+        {
+            if(y%2 == 0)
+            {
+                elemPList[y].classList.toggle('red');
+            }
+            else
+            {
+                elemPList[y].classList.toggle('blue');
+            }
+        }
+
+
+        var elemButtonGreenToRed = document.getElementById('greenToRed');
+        var elemButtonBlueToGreen = document.getElementById('blueToGreen');
+        var elemButtonRedToBlue = document.getElementById('redToBlue');
+
+        elemButtonGreenToRed.addEventListener('click', colorGreenToRed);
+        elemButtonBlueToGreen.addEventListener('click', colorBlueToGreen);
+        elemButtonRedToBlue.addEventListener('click', colorRedToBlue);
+
+
+        function colorBlueToGreen()
+        {
+            var elemListBlue = document.querySelectorAll('p.blue');
+
+            for(i = 0; i < elemListBlue.length; i++)
+            {
+                elemListBlue[i].classList.add("green");
+                elemListBlue[i].classList.remove("blue");
+            }
+        }
+
+        function colorGreenToRed()
+        {
+            var elemListGreen = document.querySelectorAll('p.green');
+
+            for(i = 0; i < elemListGreen.length; i++)
+            {
+                elemListGreen[i].classList.add("red");
+                elemListGreen[i].classList.remove("green");
+            }
+        }
+
+        function colorRedToBlue()
+        {
+            var elemListRed = document.querySelectorAll('p.red');
+
+            for(i = 0; i < elemListRed.length; i++)
+            {
+                elemListRed[i].classList.add("blue");
+                elemListRed[i].classList.remove("red");
+            }
+        }*/
+
+        var elemDiv = document.getElementById("date");
+
+        function date()
+        {
+            var now = new Date();
+            var dayNumber = now.getDay();
+            var days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+            var frenchDay = days[dayNumber];
+            var month = ["Janvier", "Fevrier", "Mars", "Avril", "Mai",
+                "Juin", "Juillet", "Aout", "Septembre",
+                "Octobre", "Novembre", "Decembre"];
+
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            var miliseconds = now.getMilliseconds();
+
+            if(minutes < 10)
+            {
+                minutes = "0" + minutes;
+            }
+
+            if(seconds < 10)
+            {
+                seconds = "0" + seconds;
+            }
+            var monthNumber = now.getMonth();
+            elemDiv.innerHTML = "Nous sommes " +
+            frenchDay + " " + now.getDate() + " " + month[monthNumber] + " "
+            + now.getFullYear() + " et il est " + now.getHours() + ": " +
+            minutes + ": " + seconds + ": " + miliseconds;
+        }
+
+        date();
+        var timer = setInterval(date, 1);
+        document.getElementById('stopTimer').addEventListener("click", function ()
+        {
+            clearInterval(timer)
+        });
+
+
+
+
+    </script>
+</body>
+</html>

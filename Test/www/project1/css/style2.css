@@ -1,0 +1,30 @@
+body {
+    width: 800px;
+    height: 1700px;
+}
+
+div#nav ul {
+    padding: 0px;
+}
+
+div#nav ul li {
+    margin-right: 3%;
+    display: inline-block;
+}
+
+div#page {
+    width: 600px;
+    margin: auto;
+}
+
+div.article p {
+    margin: 0px;
+    text-align: justify;
+    max-width: 300px;
+}
+
+div.article {
+    background-color: chocolate;
+    width: 300px;
+    margin-bottom: 5px;
+}

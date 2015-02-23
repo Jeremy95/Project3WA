@@ -1,0 +1,118 @@
+.clear {
+    clear: both;
+}
+
+@viewport {
+    width: device-width;
+    zoom: 1;
+}
+
+@-ms-viewport {
+    width: device-width;
+    zoom: 1;
+}
+
+div#slider {
+    background-size: cover;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+div#header #slogan {
+    text-align: right;
+}
+
+div#header #menu {
+    max-width: 100%;
+    text-align: center;
+    padding: 0;
+}
+
+div#header #menu li {
+    display: inline-block;
+    background-color: #ebead8;
+    padding: 1% 4.7%;
+
+}
+
+div#header #menu li:first-child {
+    margin-left: auto;
+    color: #ebead8;
+
+}
+
+div#header #menu li:last-child {
+    margin-right: auto;
+    color: #ebead8;
+
+}
+
+div#slider img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+div.content {
+    text-align: center;
+    background-color: #ebead8;
+    background-size: cover;
+    width: 100%;
+    height: 262px;
+}
+
+div.content div.sideLeft {
+    float: left;
+    width: 33%;
+}
+
+div.content p {
+    text-align: left;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+div.content ul {
+    text-align: left;
+}
+
+div.content ul li {
+    list-style-image: url("../img/puce.png");
+}
+
+div.content h2 {
+    text-align: left;
+}
+
+div.content div.sideRight {
+    float: left;
+    width: 33%;
+}
+
+div.content div.sideCenter {
+    float: left;
+    width: 33%;
+}
+
+div.content div.sideRight div.newsletter {
+    background-color: #bf3a17;
+    padding: 0 5% 5% 5%;
+}
+
+div.content div.sideRight div.newsletter {
+    background-color: #bf3a17;
+    padding: 0 5% 5% 5%;
+}
+
+div.content div.sideRight div.newsletter h3 {
+    text-align: left;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+footer {
+    font-size: 1rem;
+    position: relative;
+    bottom: 0;
+    margin-top: 2%;
+}

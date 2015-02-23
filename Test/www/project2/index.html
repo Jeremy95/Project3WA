@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script type="text/javascript" src="http://malsup.github.com/jquery.cycle.all.js"></script>
+    <script type="text/javascript" src="http://malsup.github.com/jquery.easing.1.3.js"></script>
+    <script src="js/script.js"></script>
+    <title></title>
+</head>
+<body>
+
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Indie+Flower);
+    @import url(http://fonts.googleapis.com/css?family=Dancing+Script);
+
+    body {
+        font-family: 'Dancing Script',cursive;
+    }
+
+    * {
+        box-sizing: content-box;
+    }
+
+    div#page {
+
+    }
+
+    div#bloc1 {
+        width: 500px;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 1;
+        padding-bottom: 50px;
+        background-color: #FFCF4C;
+    }
+
+    div#header {
+        background-color: #1e5799;
+        width: 100%;
+        height: 50px;
+        margin: 0;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        text-align: center;
+    }
+
+    div#footer {
+        background-color: #1e5799;
+        width: 100%;
+        height: 50px;
+        margin: 0;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        text-align: center;
+    }
+
+    div#footer span {
+        position: absolute;
+        right: 0;
+        left: 0;
+        margin-top: 13px;
+    }
+
+    div#header span {
+        position: absolute;
+        right: 0;
+        left: 0;
+        margin-top: 13px;
+    }
+
+    div#bloc2 {
+        background-color: #72AA21;
+        width: 200px;
+        height: 150px;
+        position: relative;
+        top: 200px;
+    }
+
+    div#bloc3 {
+        background-color: blueviolet;
+        width: 100px;
+        height: 75px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        opacity: 0.6;
+    }
+
+    div#bloc4 {
+        height: 200px;
+        width: 200px;
+        text-align: center;
+        position: relative;
+        top: 218px;
+        border: 1px black solid;
+        overflow: hidden;
+        visibility: hidden;
+    }
+
+    div#bloc4 .title {
+        position: absolute;
+        bottom: -30px;
+        right: 0;
+        left: 0;
+        border: 1px black solid;
+    }
+
+    div#bloc4:hover .title {
+        -moz-animation: move 2s;
+        -webkit-animation: move 2s;
+        animation: move 2s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes move {
+        from {
+            bottom: -30px;
+        }
+        to {
+            bottom: 100px;
+        }
+    }
+
+    @-webkit-keyframes move {
+        from {
+            bottom: -30px;
+        }
+        to {
+            bottom: 100px;
+        }
+    }
+
+    ul#menu {
+        width: 20%;
+        background-color: antiquewhite;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    ul#menu > li {
+        color: #1e5799;
+        padding-right: 5%;
+        list-style: none;
+    }
+
+    ul#menu li:nth-child(2n) {
+        color: #998866;
+    }
+
+
+    ul#menu .sous_menu {
+        position: absolute;
+        padding: 0;
+        display: none;
+        background-color: #999999;
+    }
+    
+    ul#menu .sous_menu li {
+        list-style: none;
+    }
+
+    ul#menu li:hover ul.sous_menu {
+        display: block;
+
+    }
+
+    div#content {
+        margin-bottom: 100px;
+    }
+
+
+    div#content span:nth-of-type(3) {
+        color: #ff6633;
+    }
+
+    form#form fieldset {
+        border-color: #1e5799;
+        border-radius: 5px;
+        background-color: burlywood;
+    }
+
+    form#form fieldset legend {
+        font-size: 158%;
+
+    }
+
+    form#form fieldset#side_left {
+        float: left;
+    }
+
+
+    form#form fieldset.side_right label[for=music], label[for=cinema], label[for=theatre] {
+        display: inline-block;
+        width: 7%;
+    }
+
+    form#form #side_left label {
+        display: inline-block;
+        width: 15%;
+    }
+
+
+    form#form label[for=comments] {
+        vertical-align: top;
+    }
+
+    form#form input[type=submit] {
+        border-radius: 5px;
+        padding: 5px;
+        background-color: #207cca;
+        color: #ffffff;
+        text-shadow: 1px 1px black;
+        box-shadow: 1px 1px black;
+    }
+
+    form#form input:checked label {
+        font-weight: bold;
+    }
+
+
+    form#form div#send {
+        text-align: center;
+    }
+
+    div#zoom {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+
+
+</style>
+
+<div id="page">
+
+
+    <div id="header">
+    <span>header</span>
+    </div>
+
+    <div id="zoom">
+        <img src="../ProjectResponsive/img/index.jpeg" alt=""/>
+        <img src="../ProjectResponsive/img/og-moving-image.jpg" alt=""/>
+    </div>
+
+    <div id="bloc1">
+        <h1>Ma vid&eacute;o</h1>
+        <div style="text-align: center">
+            <iframe width="480" height="390" src="//www.youtube.com/embed/-Qu0NAcc86E" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
+    <div id="bloc2">
+        L'Opacité
+        <div id="bloc3">
+            Opacity
+        </div>
+    </div>
+
+    <div id="bloc4">
+        <img src="img/3682116.png" alt=""/>
+        <div class="title">
+            Title
+        </div>
+    </div>
+
+    <ul id="menu">
+        <li><a href="">Menu 1</a>
+            <ul style="left: 91px; bottom: -20px;" class="sous_menu">
+                <li>
+                    <a href="">Sous menu 1</a>
+                </li>
+                <li><a href="">Sous menu 2</a></li>
+                <li><a href="">Sous menu 2</a></li>
+                <li><a href="">Sous menu 2</a></li>
+            </ul>
+        </li>
+        <li><a href="">Menu 2</a>
+            <ul style="left: 91px; bottom: -46px;" class="sous_menu">
+                <li>
+                    <a href="">Sous menu 1</a>
+                </li>
+                <li><a href="">Sous menu 2</a></li>
+                <li><a href="">Sous menu 2</a></li>
+                <li><a href="">Sous menu 2</a></li>
+            </ul>
+        </li>
+        <li><a href="">Menu 3</a>
+            <ul style="left: 91px; bottom: -60px;" class="sous_menu">
+                <li>
+                    <a href="">Sous menu 1</a>
+                </li>
+                <li><a href="">Sous menu 2</a></li>
+                <li><a href="">Sous menu 2</a></li>
+                <li><a href="">Sous menu 2</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div id="content">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+
+        <div>
+            <audio controls>
+                <source type="audio/aac">
+                <source type="audio/mp3" src="http://www.show2babi.com/files.uploaded/fr_zik/105_Soprano-Cosmo-www.show2babi.com.mp3">
+                <source type="audio/ogg">
+            </audio>
+        </div>
+
+
+
+
+
+        <!--facultatif c'est que si il y a un upload de fichier enctype="multipart/form-data"-->
+        <form action="fichier.php" method="post" name="form" id="form">
+            <!-- par convention les balises input hidden sont mise en dessous de la balise form -->
+            <input type="hidden" value="" name="IP"/>
+
+            <fieldset id="side_left">
+                <legend>Information générales</legend>
+                <div>
+                    <p>
+                        <label for="nom">Nom:</label>
+                        <input type="text" pattern="[a-zA-Z]" name="nom" maxlength="50" required>
+                    </p>
+                    <p>
+                        <label for="nom">Adresse:</label>
+                        <input type="text" name="adress" maxlength="50" required>
+                    </p>
+                    <p>
+                        <label for="nom">Ville:</label>
+                        <input type="text" name="town" maxlength="50" required>
+                    </p>
+                    <p>
+                        <label for="nom">Code Postal:</label>
+                        <input type="number" name="postCode" maxlength="50" required>
+                    </p>
+                    <p>
+                        <label for="nom">Email:</label>
+                        <input pattern="[\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b]" type="email" name="mail" maxlength="50" required>
+                    </p>
+                    <p>
+                        <label for="profilPicture">Uploadez votre photo :</label>
+                        <input type="file" name="profilPicture"/>
+                    </p>
+                    <p>
+                        <input type="range" oninput="document.getElementById('results').textContent=value" name="profilPicture">
+                        <span id="results"></span>
+                    </p>
+                </div>
+
+                <div>
+                    <label for="ville">Pays :</label>
+                    <select name="ville" id="">
+                        <option value="france">France</option>
+                        <option value="royaume-uni">Royaume-Uni</option>
+                        <option value="belgique">Belgique</option>
+                    </select>
+                </div>
+
+                <p></p>
+
+                <div>
+                    <label for="sex">Sexe :</label>
+                    Masculin
+                    <input type="radio" name="sex" value="M"/>
+                    Feminin
+                    <input type="radio" name="sex" value="F"/>
+                </div>
+            </fieldset>
+
+            <fieldset class="side_right">
+                <legend>Loisirs</legend>
+                    <input type="checkbox" name="music" checked>
+                    <label for="music">Musique</label>
+                <br/>
+                    <input type="checkbox" name="theatre">
+                    <label for="theatre">Théatre</label>
+                <br/>
+                    <input type="checkbox" name="cinema">
+                    <label for="cinema">Cinéma</label>
+            </fieldset>
+
+            <fieldset class="side_right">
+                <legend>Présentation</legend>
+                <p>
+                    <label for="comments">Commentaires</label>
+                    <textarea maxlength="500" name="comments" id="commentary" cols="30" rows="10"></textarea>
+                </p>
+
+                <p>
+                    <label for="myList">Ma listes de biéres</label>
+                    <input list="bieres" name="myList" type="text" id="choix_bieres" value="Cliquez"/>
+                    <datalist id="bieres">
+                        <option value="1664">1664</option>
+                        <option value="heineken">Heineken</option>
+                    </datalist>
+                </p>
+            </fieldset>
+
+            <div id="send">
+                <input type="submit" value="Envoyer"/>
+            </div>
+
+        </form>
+
+
+    </div>
+    
+
+
+
+
+    <div id="footer">
+        <span>footer</span>
+    </div>
+</div>
+
+</body>
+</html>

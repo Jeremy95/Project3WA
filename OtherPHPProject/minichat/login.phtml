@@ -1,0 +1,14 @@
+<h3>Please log in</h3>
+
+<?php if (array_key_exists("error", $_SESSION)) : ?>
+	<h2><?= $_SESSION["error"] ?></h2>
+	<?php unset($_SESSION["error"]) ?>
+<?php endif ?>
+
+<form action="login.php" method="post">
+	<input type="text" placeholder="username" name="username">
+	<input type="password" name="password">
+	<input type="submit" value="login">
+</form>
+
+<a href="register.php">I don't have an account</a>

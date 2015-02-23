@@ -1,0 +1,60 @@
+a {
+    color: #7f3734;
+    text-decoration: none;
+    transition: color 0.25s ease 0s;
+}
+a:hover {
+    color: #ffcc5c;
+}
+body {
+    font-family: "Open Sans",sans-serif;
+    margin: 0 auto;
+    min-height: 100%;
+    padding: 1em;
+    width: 80%;
+}
+html {
+    background-color: #f8fff2;
+    height: 100%;
+}
+h1 {
+    color: #00968b;
+}
+.order-form-customer {
+    padding: 1em 0;
+    text-align: right;
+}
+.standard-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.standard-table caption {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 0.5em 0;
+}
+.standard-table tbody tr {
+    transition: background-color 0.25s ease 0s;
+}
+.standard-table tbody tr:nth-child(2n), .standard-table tfoot tr:nth-child(2n) {
+    background-color: #dfe5da;
+}
+.standard-table tbody tr:nth-child(2n+1), .standard-table tfoot tr:nth-child(2n+1) {
+    background-color: #babfb5;
+}
+.standard-table tbody tr:hover {
+    background-color: #998882;
+    cursor: default;
+}
+.standard-table tbody tr td, .standard-table tfoot tr th, .standard-table thead tr th {
+    padding: 0.25em 0.5em;
+}
+.standard-table tfoot tr, .standard-table thead tr {
+    color: #00968b;
+}
+.standard-table thead tr {
+    text-align: left;
+}
+.standard-table tfoot tr, .standard-table .money-column {
+    text-align: right;
+}

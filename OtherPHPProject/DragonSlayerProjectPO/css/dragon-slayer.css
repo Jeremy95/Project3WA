@@ -1,0 +1,100 @@
+*
+{
+    box-sizing: border-box;
+    box-sizing: -moz-border-box;
+}
+
+body
+{
+    /* structure */
+    margin: 3em auto;
+    max-width: 1000px;
+    min-width: 850px;
+    width: 80%;
+
+    /* presentation */
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1,
+h2,
+h3
+{
+    font-family: 'Indie Flower', cursive;
+    letter-spacing: 0.1em;
+}
+
+h1
+{
+    /* structure */
+    line-height: 48px;
+    margin: 0;
+    padding: 16px 0;
+
+    /* presentation */
+    color: #AD0B04;
+    text-align: center;
+}
+
+h2
+{
+    color: #0666C5;
+    text-shadow: 0 0 6px deepskyblue;
+}
+
+h3
+{
+    /* structure */
+    margin-top: 0;
+
+    /* presentation */
+    color: #0666C5;
+    text-align: center;
+}
+
+html
+{
+    /* structure */
+    height: 100%;
+    overflow-y: scroll;
+
+    /* presentation */
+    background: url('../images/background.jpg') no-repeat center fixed;
+    background-size: cover;
+}
+
+main
+{
+    /* structure */
+    height: 680px;
+    padding: 0 1em;
+    position: relative;
+
+    /* presentation */
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    box-shadow: 0 0 6px 2px #850600;
+}
+
+
+.game-block
+{
+    position: relative;
+}
+
+.game-panel
+{
+    /* structure */
+    overflow: hidden;
+    padding: 0.5em;
+
+    /* presentation */
+    background-color: rgba(224, 181, 119, 0.5);
+    border-radius: 6px;
+    box-shadow: 0 0 4px 1px #AD0B04;
+}
+
+.hide
+{
+    display: none;
+}

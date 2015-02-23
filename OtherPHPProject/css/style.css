@@ -1,0 +1,72 @@
+
+h1 {
+    background-color: #000;
+    color: #fff;
+    font-size: 24px;
+    margin: 30px 0 20px;
+    padding: 10px 0;
+}
+table {
+    text-align: center;
+    width: 100%;
+}
+table > thead > tr {
+    background-color: #aaa;
+    border: 1px solid #aaa;
+    color: #fff;
+}
+table > thead > tr > th {
+    padding: 10px;
+}
+table > tbody > tr {
+    border: 1px solid #aaa;
+}
+table > tbody > tr > td {
+    padding: 5px 10px;
+}
+table > tbody > tr:nth-child(2n+1) > td {
+    background-color: #fafafa;
+}
+table > tbody > tr:nth-child(2n) > td {
+    background-color: #eee;
+}
+div.container {
+    margin: 0 auto;
+    text-align: center;
+    width: 800px;
+}
+form > div {
+    display: table;
+    padding: 5px 0;
+}
+form > div > label {
+    display: table-cell;
+    padding-right: 20px;
+    text-align: right;
+    width: 200px;
+}
+form > div > input, form > div > select, form > div > textarea {
+    display: table-cell;
+    width: 200px;
+}
+form > div > input[type="submit"] {
+    margin-left: 220px;
+}
+p.message {
+    background-color: #888;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    margin: 10px 0;
+    min-width: 50%;
+    padding: 10px 50px;
+}
+
+.message_error {
+    background-color: #888888;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 2%;
+    width: 43%;
+    font-weight: bold;
+}

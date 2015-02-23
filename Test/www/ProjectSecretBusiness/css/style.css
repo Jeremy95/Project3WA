@@ -1,0 +1,254 @@
+.clear {
+    clear: both;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+div#slogan {
+    text-align: right;
+    margin-top: 4%;
+}
+
+@-webkit-keyframes mymove {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+    to {
+        top: -91%;
+        opacity: 1;
+    }
+}
+
+/* Standard syntax */
+@keyframes mymove {
+    from {
+        top: 0;
+        opacity: 0;
+    }
+    to {
+        top: -91%;
+        opacity: 1;
+    }
+}
+
+nav#menu ul#menuUl {
+    text-align: center;
+    max-width: 100%;
+    padding: 0;
+}
+
+nav#menu ul#menuUl > li {
+    display: inline-block;
+    padding: 1.4% 5%;
+    background-color: #ebead8;
+    position: relative;
+}
+
+nav#menu ul#menuUl li a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav#menu ul#menuUl > li:hover {
+    background-color: #d3c69c;
+}
+nav#menu ul#menuUl li:hover a {
+    color: white;
+}
+
+nav#menu ul#menuUl li ul.sousMenu {
+    left: 0;
+    position: absolute;
+    top: -91%;
+    right: 0;
+    padding: 0;
+    bottom: 0;
+    display: none;
+
+
+}
+
+nav#menu ul#menuUl li ul.sousMenu > li {
+    background-color: #bf3a17;
+    color: #ffffff;
+    list-style: outside none none;
+    padding: 8% 30%;
+}
+
+nav#menu ul#menuUl li:hover ul.sousMenu {
+    display: block;
+    -webkit-animation: mymove 1s; /* Chrome, Safari, Opera */
+    animation: mymove 1s;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+
+}
+
+nav#menu ul#menuUl li a:hover nav#menu ul#menuUl li{
+    background-color: #d3c69c;
+}
+
+
+nav#menu ul#menuUl li:first-child {
+    color: #ebead8;
+    padding: 1.4% 3%;
+}
+
+nav#menu ul#menuUl li:last-child {
+    color: #ebead8;
+    padding: 1.4% 3%;
+}
+
+div#bloc_slider {
+    position: relative;
+}
+
+div#bloc_text {
+    position: absolute;
+    left: 22%;
+    top: 40px;
+}
+
+div#bloc_text p {
+    margin: 0;
+    padding: 0;
+}
+
+div#slider {
+    max-width: 100%;
+    background-size: cover;
+    float: right;
+    padding-right: 10%;
+}
+
+div#slider img {
+    max-width: 100%;
+    height: auto;
+}
+
+footer.preFooter {
+    max-width: 100%;
+    margin: 0 auto;
+    height: 262px;
+    padding-left: 7%;
+    background-color: #dbd5bb;
+    background-size: cover;
+    padding-top: 2%;
+}
+
+main.content {
+    max-width: 100%;
+    margin: 0 auto;
+    height: 262px;
+    padding-left: 7%;
+    background-color: #ebead8;
+    padding-bottom: 7%;
+}
+
+main.content h3, footer.preFooter h3 {
+    text-align: left;
+    font-size: 1.4rem;
+    margin-bottom: 0;
+}
+
+main.content section.side_left {
+    float: left;
+    width: 33%;
+}
+
+main.content section.side_center {
+    float: left;
+    width: 33%;
+}
+
+main.content aside.side_right {
+    float: left;
+    width: 33%;
+}
+
+main.content a {
+    color: #bf3a17;
+    text-decoration: underline;
+}
+
+main.content ul li, footer.preFooter ul li {
+    list-style-image: url("../img/puce.png");
+}
+
+main.content p, main.content ul li, footer.preFooter p, footer.preFooter ul li {
+    text-align: left;
+    width: 80%;
+    font-size: 0.9rem;
+}
+
+footer.preFooter nav.side_left {
+    float: left;
+    width: 33%;
+}
+
+footer.preFooter a {
+    text-decoration: underline;
+    color: #bf3a17;
+}
+
+footer.preFooter nav.side_center {
+    float: left;
+    width: 33%;
+}
+
+footer.preFooter nav.side_right {
+    float: left;
+    width: 33%;
+}
+
+footer.preFooter p, footer.preFooter ul li {
+    text-align: left;
+
+}
+
+footer.preFooter ul li {
+    margin-bottom: 2%;
+}
+
+form.newsletter {
+    background-color: #bf3a17;
+    border-radius: 3px;
+    width: 79%;
+    padding-left: 5%;
+    padding-bottom: 3%;
+}
+
+form.newsletter a {
+    text-align: left;
+    color: white;
+}
+
+form.newsletter label {
+    color: white;
+    padding-left: 7%;
+    font-size: x-large;
+}
+
+form.newsletter button {
+    background-color: #f8931d;
+    border: 0 none;
+    border-radius: 3px;
+    color: white;
+    padding: 1% 3%;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form.newsletter input[type=search] {
+    width: 70%;
+    border-radius: 5px;
+    padding: 1% 2%;
+}

@@ -1,0 +1,42 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: wap19
+ * Date: 05/02/15
+ * Time: 13:50
+ */
+?>
+
+<?php require_once "head.phtml"; ?>
+
+<div class="container">
+        <h1>List all tasks</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Priority</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php for($i=0; $i < sizeof($data); $i++) : ?>
+              <tr>
+                  <?php foreach($data[$i] as $value) : ?>
+                  <td>
+                        <?= $value; ?>
+                  </td>
+                  <?php endforeach; ?>
+                  <td>
+                      <a href=delete.php?id=<?= $i ?>><i class="fa fa-times"></i></a>
+                  </td>
+              </tr>
+
+        <?php endfor; ?>
+                </tbody>
+    </table>
+</div>
+
+<?php require_once "footer.phtml"; ?>
+

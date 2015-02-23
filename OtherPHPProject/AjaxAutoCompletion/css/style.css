@@ -1,0 +1,22 @@
+.codePostal {
+    width: 25%;
+}
+
+table tr:nth-child(odd)
+{
+    background-color: rgba(42, 168, 117, 0.100)
+}
+
+label {
+    margin: 1%;
+}
+
+input, select {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#addStudent
+{
+    width: 50%;
+}

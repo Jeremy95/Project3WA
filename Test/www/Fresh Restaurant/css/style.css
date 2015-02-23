@@ -1,0 +1,165 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+*{
+    box-sizing: content-box;
+}
+body {
+    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+    background: #f2f5f6; /* Old browsers */
+    background: -moz-linear-gradient(top, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f5f6), color-stop(37%,#e3eaed), color-stop(100%,#c8d7dc)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 ); /* IE6-9 */
+}
+div#page {
+    width: 100%;
+}
+
+/***** HEADER ******/
+
+div#header {
+    position: relative;
+}
+div#menu {
+    float: right;
+}
+div#menu ul li {
+    display: inline-block;
+    background-image: url("../img/puce.png");
+    background-repeat: no-repeat;
+    background-position: center 0;
+    margin-right: 20px;
+    padding-top: 20px;
+}
+div#menu ul li a {
+    text-decoration: none;
+    color: #CEC5B0;
+}
+div#img {
+    position: absolute;
+    bottom: -185px;
+    left: 113px;
+    top: 80px;
+}
+div#banner {
+    position: relative;
+    top: 60px;
+}
+div#logo {
+    background-image: url("../img/body_bg.png");
+    height: 50px;
+    width: 100%;
+    font-size: 2rem;
+    text-align: right;
+    color: white;
+    text-shadow: 1px 1px black;
+}
+div#logo h1 {
+    font-size: 40px;
+}
+div#logo h1 {
+    padding-right: 20px;
+}
+
+
+
+/******* CONTENT ********/
+
+div#welcome {
+    margin-top: 60px;
+    width: 40%;
+    float: right;
+    margin-right: 20px;
+}
+div#welcome p span {
+    color: #72AA21;
+    font-weight: bold;
+}
+div#main {
+    margin-top: 20%;
+    position: relative;
+}
+div#main h1 {
+    border-bottom: 1px darkgray solid;
+    width: 82%;
+    padding-bottom: 4%;
+
+}
+div#main .side_left {
+    width: 40%;
+    float: left;
+    padding-left: 35px;
+}
+div#main .side_left div.side_left_content {
+    border-right: 1px darkgray solid;
+}
+div#main .side_left ul li {
+    width: 55%;
+    list-style-image: url("../img/puce.png");
+    margin-bottom: 20px;
+}
+div#main .side_right {
+    width: 49%;
+    float: left;
+    padding-left: 50px;
+}
+div#main .side_right tr.first td.tdOneFirst {
+    background-image: url("../img/recette1.png");
+    background-repeat: no-repeat;
+    background-position: left 0;
+    padding-left: 110px;
+}
+div#main td {
+    padding: 15px;
+}
+div#main .side_right tr.first td.tdTwoFirst {
+    background-image: url("../img/recette2.png");
+    background-repeat: no-repeat;
+    background-position: left 0;
+    padding-left: 110px;
+}
+
+
+
+
+
+/******** FOOTER ******/
+
+div#footer {
+
+}
+.list {
+    text-align: center;
+    background-color: #A87F65;
+    padding: 10px;
+}
+div#footer .list li {
+    display: inline-block;
+    border-right: 1px white solid;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+div#footer .list li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+a:visited {
+    color: white;
+}
+div#footer .list li:last-child {
+    border-right: 0px;
+}
+div#footer .copyright {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+.clear {
+    clear: both;
+}

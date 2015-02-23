@@ -1,0 +1,27 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: wap19
+ * Date: 05/02/15
+ * Time: 14:53
+ */
+?>
+
+<?php require_once "head.phtml"; ?>
+
+<div class="container">
+    <h1>Remove a task</h1>
+
+
+    <form method="post" action="remove.php">
+        <label for="line">Line to delete </label>
+        <select name="line" id="line">
+            <?php for($i=0; $i < sizeof($data); $i++) :?>
+            <option value=<?= $i ?>> <?php foreach($data[$i] as $value) { echo " ".$value." "; } ?></option>
+            <?php endfor; ?>
+        </select>
+        <input type="submit" name="submit">
+    </form>
+</div>
+
+<?php require_once "footer.phtml"; ?>

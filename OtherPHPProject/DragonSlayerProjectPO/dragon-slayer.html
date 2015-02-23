@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Dragon Slayer 2 !!</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Indie+Flower">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/dragon-slayer.css">
+    <link rel="stylesheet" href="css/ui.css">
+
+    <!-- Librairie jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Classes du jeu (code orienté objet) -->
+    <script src="js/classes/Game.class.js"></script>
+    <script src="js/classes/Player.class.js"></script>
+    <script src="js/classes/ui/GameState.class.js"></script>
+    <script src="js/classes/ui/GameMap.class.js"></script>
+    <script src="js/classes/Map.class.js"></script>
+    <script src="js/classes/ui/MessagePanel.class.js"></script>
+    <script src="js/classes/Dragon.class.js"></script>
+    <script src="js/classes/ui/GameOver.class.js"></script>
+    <!-- Données du jeu -->
+    <script src="js/dragon-slayer-data.js"></script>
+    <!-- Fonctions utilitaires (code procédural) -->
+    <script src="js/utilities.js"></script>
+</head>
+<body>
+    <main>
+        <h1>ᛗ Dragon Slayer II</h1>
+
+        <!-- Titre du jeu -->
+        <h2 id="js-ui-game-title" class="game-block ui-game-title">La version jQuery et orientée objet ;-)</h2>
+
+        <!-- Menu de démarrage du jeu -->
+        <form id="js-ui-game-menu" class="game-block hide ui-game-menu">
+            <fieldset>
+                <legend>Menu de démarrage</legend>
+                <ul>
+                    <!-- Champ texte player-nick-name pour saisir son pseudo -->
+                    <li>
+                        <label for="player-nick-name">Votre pseudo</label>
+                        <input type="text" name="player-nick-name" id="player-nick-name"/>
+                    </li>
+
+
+                    <!-- Liste déroulante player-class pour sélectionner la classe du joueur -->
+                    <li>
+                        <label for="player-class">Choisissez votre classe</label>
+                        <select name="player-class" id="player-class">
+                            <option value="paladin">Paladin</option>
+                            <option value="wizard">Magicien</option>
+                            <option value="thief">Voleur</option>
+                        </select>
+                    </li>
+
+
+                    <!-- Boutons radio difficulty pour sélectionner le niveau de difficulté -->
+                    <li>
+                        <label for="difficulty-normal">Niveau de difficulté :</label>
+                        <input id="difficulty-easy" type="radio" value="easy" name="difficulty">
+                        <label class="radio" for="difficulty-easy">Facile</label>
+                        <input id="difficulty-normal" type="radio" checked="" value="normal" name="difficulty">
+                        <label class="radio" for="difficulty-normal">Normal</label>
+                        <input id="difficulty-hard" type="radio" value="hard" name="difficulty">
+                        <label class="radio" for="difficulty-hard">Difficile</label>
+                    </li>
+                </ul>
+
+
+                <!-- Bouton js-game-start pour soumettre le formulaire -->
+                <input type="button" id="js-game-start" value="Démarrer"/>
+            </fieldset>
+        </form>
+
+        <!-- Conteneurs HTML pour la scène du jeu -->
+        <section id="js-game-scene" class="game-block hide">
+
+            <!-- Carte du jeu -->
+            <article id="js-ui-game-map" class="game-panel ui-game-map">
+                <canvas></canvas>
+                <p></p>
+                <small><strong>AIDE</strong> - Touches fléchées pour se déplacer - Touche F pour se battre</small>
+            </article>
+
+            <!-- Ecran de fin du jeu -->
+            <article id="js-ui-game-over" class="game-panel ui-game-over">
+                <img src="">
+                <p></p>
+                <input type="button" id="js-game-restart" value="Redémarrer !">
+            </article>
+
+            <!-- Etat du jeu -->
+            <article id="js-ui-game-state" class="game-panel ui-game-state">
+                <h3></h3> <!-- Nom du joueur -->
+                <ul>
+                    <li></li> <!-- Points de vie du dragon -->
+                    <li></li> <!-- Points de vie du joueur -->
+                    <li></li> <!-- Classe du joueur -->
+                    <li></li> <!-- Armure du joueur -->
+                    <li></li> <!-- Arme du joueur -->
+                </ul>
+            </article>
+
+            <!-- Panneau de messages du jeu -->
+            <aside id="js-ui-message-panel" class="game-panel ui-message-panel">
+                <ul></ul>
+            </aside>
+        </section>
+    </main>
+
+    <!-- Fonction principale du jeu (code procédural) -->
+    <script src="js/dragon-slayer.js"></script>
+</body>
+</html>

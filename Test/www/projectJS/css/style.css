@@ -1,0 +1,27 @@
+.tableau tr:nth-child(even)
+{
+    background-color: #1e5799;
+}
+
+
+.tableau tr
+{
+    text-align: center;
+}
+
+.tableau
+{
+    border: 1px black solid;
+    border-collapse: collapse;
+}
+
+.tableau td
+{
+    border-right: 1px #000000 solid;
+    padding: 5px;
+}
+
+.special {
+    background-color: #72AA21;
+}
+

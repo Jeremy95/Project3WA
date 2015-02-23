@@ -1,0 +1,64 @@
+div#slider {
+    background-size: cover;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+div#header #menu {
+    max-width: 100%;
+    text-align: center;
+    padding: 0;
+}
+
+div#header #menu li {
+    display: inline-block;
+    background-color: #CEC5B0;
+    padding: 2% 7%;
+
+}
+
+div#header #menu li:first-child {
+    margin-left: auto;
+
+}
+
+div#header #menu li:last-child {
+    margin-right: auto;
+
+}
+
+div#slider img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+div#home {
+    text-align: center;
+
+    background-size: cover;
+    padding: 10px;
+
+    margin-top: 2%;
+}
+
+div#home p {
+
+}
+
+div#home div#sideLeft {
+    float: left;
+}
+
+
+
+
+
+
+footer {
+    text-align: center;
+    font-size: 0.6em;
+    position: relative;
+    bottom: 0;
+    margin-top: 2%;
+}

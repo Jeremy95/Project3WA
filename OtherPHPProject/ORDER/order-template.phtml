@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>PHP</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <style>
+        @import url('http://fonts.googleapis.com/css?family=Open+Sans');
+        a
+        {
+            color: #7F3734;
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+        a:hover
+        {
+            color: #FFCC5C;
+        }
+        body
+        {
+            /* structure */
+            margin: 0 auto;
+            padding: 1em;
+            min-height: 100%;
+            width: 80%;
+            /* presentation */
+            font-family: 'Open Sans', sans-serif;
+        }
+        html
+        {
+            /* structure */
+            height: 100%;
+            /* presentation */
+            background-color: #F8FFF2;
+        }
+        h1
+        {
+            color: #00968B;
+        }
+        .order-form-customer
+        {
+            /* structure */
+            padding: 1em 0;
+            /* presentation */
+            text-align: right;
+        }
+        .standard-table
+        {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .standard-table caption
+        {
+            /* structure */
+            padding: 0.5em 0;
+            /* presentation */
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .standard-table tbody tr
+        {
+            transition: background-color 0.25s;
+        }
+        .standard-table tbody tr:nth-child(even),
+        .standard-table tfoot tr:nth-child(even)
+        {
+            background-color: #DFE5DA;
+        }
+        .standard-table tbody tr:nth-child(odd),
+        .standard-table tfoot tr:nth-child(odd)
+        {
+            background-color: #BABFB5;
+        }
+        .standard-table tbody tr:hover
+        {
+            background-color: #998882;
+            cursor: default;
+        }
+        .standard-table tbody tr td,
+        .standard-table tfoot tr th,
+        .standard-table thead tr th
+        {
+            padding: 0.25em 0.5em;
+        }
+        .standard-table tfoot tr,
+        .standard-table thead tr
+        {
+            color: #00968B;
+        }
+        .standard-table thead tr
+        {
+            text-align: left;
+        }
+        .standard-table tfoot tr,
+        .standard-table .money-column
+        {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <?php if(is_numeric($_GET["orderNumber"]) && $_GET["orderNumber"] != 0 && sizeof($montant) != 0 && sizeof($ordersDetails) != 0) : ?>
+    <h1>Bons de commande</h1>
+
+    <a href="index.php">Retourner à l'accueil</a>
+
+    <!-- Etiquette avec fiche client -->
+    <article class="order-form-customer">
+            <hgroup>
+                <h2><?= $ordersDetails[0]["customerName"]; ?></h2>
+                <h3>
+                    <?= $ordersDetails[0]["contactFirstName"]." ".$ordersDetails[0]["contactLastName"]; ?>
+                </h3>
+            </hgroup>
+            <p><?= $ordersDetails[0]["addressLine1"]; ?></p>
+            <p><?= $ordersDetails[0]["city"]; ?></p>
+            <p></p>
+    </article>
+    <hr>
+
+    <!-- Le bon de commande -->
+    <table class="standard-table">
+        <caption>Bon de commande n°<?= $_GET["orderNumber"]; ?></caption>
+        <thead>
+        <tr>
+            <th>Produit</th>
+            <th class="money-column">Prix Unitaire</th>
+            <th>Quantité</th>
+            <th class="money-column">Prix Total</th>
+        </tr>
+        </thead>
+        <!-- Un footer de tableau HTML se positionne AVANT le body ! -->
+        <tfoot>
+        <tr>
+            <th colspan="3">Montant Total HT</th>
+            <th><?= number_format($montant["totalHT"], 2)." €"; ?></th>
+        </tr>
+        <tr>
+            <th colspan="3">TVA (20 %)</th>
+            <th>
+                <?php $montantTTC = $montant["totalHT"]*1.2;
+                $montantTVA = $montantTTC - $montant["totalHT"]; ?>
+                <?= number_format($montantTVA, 2)." €"; ?>
+            </th>
+        </tr>
+        <tr>
+            <th colspan="3">Montant Total TTC</th>
+            <th><?= number_format($montantTTC, 2)." €"; ?></th>
+        </tr>
+        </tfoot>
+        <tbody>
+        <?php foreach($ordersDetails as $value) : ?>
+            <tr>
+                <td>
+                    <?= $value["productName"]; ?>
+                </td>
+                <td class="money-column">
+                    <?= number_format($value["priceEach"], 2)." €"; ?>
+                </td>
+                <td>
+                    <?= $value["quantityOrdered"]; ?>
+                </td>
+                <td class="money-column">
+                    <?php $total = $value["priceEach"]*$value["quantityOrdered"]; ?>
+                    <?= number_format($total, 2)." €"; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+        <?php else : ?>
+        <h1>Désolé la page que vous avez demandé n'existe pas !</h1>
+        <a href="index.php">Retourner à l'accueil</a>
+    <?php endif; ?>
+</section>
+
+</body>
+</html>

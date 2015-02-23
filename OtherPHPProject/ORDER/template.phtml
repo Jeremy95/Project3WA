@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>PHP</title>
+    <link href="css/style.css" rel="stylesheet"/>
+    <style>
+        @import url('http://fonts.googleapis.com/css?family=Open+Sans');
+        a
+        {
+            color: #7F3734;
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+        a:hover
+        {
+            color: #FFCC5C;
+        }
+        body
+        {
+            /* structure */
+            margin: 0 auto;
+            padding: 1em;
+            min-height: 100%;
+            width: 80%;
+            /* presentation */
+            font-family: 'Open Sans', sans-serif;
+        }
+        html
+        {
+            /* structure */
+            height: 100%;
+            /* presentation */
+            background-color: #F8FFF2;
+        }
+        h1
+        {
+            color: #00968B;
+        }
+        .order-form-customer
+        {
+            /* structure */
+            padding: 1em 0;
+            /* presentation */
+            text-align: right;
+        }
+        .standard-table
+        {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        .standard-table caption
+        {
+            /* structure */
+            padding: 0.5em 0;
+            /* presentation */
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .standard-table tbody tr
+        {
+            transition: background-color 0.25s;
+        }
+        .standard-table tbody tr:nth-child(even),
+        .standard-table tfoot tr:nth-child(even)
+        {
+            background-color: #DFE5DA;
+        }
+        .standard-table tbody tr:nth-child(odd),
+        .standard-table tfoot tr:nth-child(odd)
+        {
+            background-color: #BABFB5;
+        }
+        .standard-table tbody tr:hover
+        {
+            background-color: #998882;
+            cursor: default;
+        }
+        .standard-table tbody tr td,
+        .standard-table tfoot tr th,
+        .standard-table thead tr th
+        {
+            padding: 0.25em 0.5em;
+        }
+        .standard-table tfoot tr,
+        .standard-table thead tr
+        {
+            color: #00968B;
+        }
+        .standard-table thead tr
+        {
+            text-align: left;
+        }
+        .standard-table tfoot tr,
+        .standard-table .money-column
+        {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<section>
+    <h1>Bons de commande</h1>
+    <table class="standard-table">
+        <caption>Liste des commandes</caption>
+        <thead>
+        <tr>
+            <th>Commande</th>
+            <th>Date de la commande</th>
+            <th>Date de livraison</th>
+            <th>Statut</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($orders as $value) : ?>
+            <tr>
+                <td>
+                    <a href="order-form.php?orderNumber=<?= $value['orderNumber']; ?>">
+                        <?= $value['orderNumber']; ?>
+                    </a>
+                </td>
+                <td>
+                    <?= $value['orderDate']; ?>
+                </td>
+                <td>
+                    <?= $value['shippedDate']; ?>
+                </td>
+                <td>
+                    <?= $value['status']; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>
+
+
+

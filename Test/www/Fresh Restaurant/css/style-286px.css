@@ -1,0 +1,155 @@
+* {
+    box-sizing: content-box;
+}
+
+@media screen and (orientation: portrait) {
+    div#img img {
+        display: none;
+    }
+
+    div#logo h1 {
+        font-size: 25px !important;
+    }
+
+}
+
+body {
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    background: #f2f5f6; /* Old browsers */
+    background: -moz-linear-gradient(top, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f5f6), color-stop(37%,#e3eaed), color-stop(100%,#c8d7dc)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 ); /* IE6-9 */
+}
+
+div#page {
+    width: 100%;
+}
+
+div#header {
+    position: relative;
+}
+
+div#menu ul li {
+    list-style: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+div#menu {
+    background-color: #A87F65;
+    text-align: center;
+}
+
+div#menu ul {
+    padding-left: 0px;
+}
+
+div#menu ul li:hover {
+    background-color: #7d7e7d;
+}
+
+div#menu ul li:hover a {
+    color: white;
+}
+
+div#menu ul li a{
+    text-decoration: none;
+    margin: 0;
+    margin-top: 2px;
+
+}
+
+a:visited {
+    color: black;
+}
+
+
+
+div#logo {
+    background-image: url("../img/body_bg.png");
+    height: 50px;
+    width: 100%;
+    font-size: 1.6rem;
+    text-align: right;
+    color: white;
+    text-shadow: 1px 1px black;
+}
+
+div#logo h1 {
+    padding-right: 20px;
+}
+
+div#logo h1 {
+    font-size: 40px;
+}
+
+
+div#img img {
+    width: 180px;
+    height: 100px;
+    position: absolute;
+    top: 168px;
+
+}
+
+div#main h1 {
+    border-bottom: 1px darkgray solid;
+}
+
+div#main .side_left ul li {
+    list-style-image: url("../img/puce.png");
+    margin-bottom: 10px;
+}
+
+div#main .side_left ul li:last-child {
+    margin-bottom: 0px;
+}
+
+div#main .side_right tr.first td.tdOneFirst {
+    background-image: url("../img/recette1.png");
+    background-repeat: no-repeat;
+    background-position: left 0;
+    padding-left: 110px;
+}
+
+div#main .side_right tr.first td.tdTwoFirst {
+    background-image: url("../img/recette2.png");
+    background-repeat: no-repeat;
+    background-position: left 0;
+    padding-left: 110px;
+}
+
+div#footer .list li:last-child {
+    border-right: 0px;
+}
+
+div#footer .copyright {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+div#footer .list {
+    text-align: center;
+    background-color: #A87F65;
+    padding: 10px;
+    font-size: 11px;
+}
+
+div#footer .list li {
+    display: inline-block;
+    border-right: 1px white solid;
+    padding-right: 5px;
+}
+
+div#footer .list li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}

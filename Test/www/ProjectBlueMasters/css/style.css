@@ -1,0 +1,18 @@
+body {
+    background-image: url("../img/bg_1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+nav.trucBizarre ul li {
+    display: inline-block;
+}
+
+nav.search {
+    float: right;
+}
+
+nav.search ul li {
+    display: inline-block;
+}

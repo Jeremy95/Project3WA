@@ -1,0 +1,15 @@
+<?php if(array_key_exists("id", $_SESSION)) : ?>
+
+    <form action="" method="post" id="formAjout">
+        <label for="name"> Votre message</label>
+        <input type="text" name="content" id="name" class="mess">
+        <input type="submit" value="Send"/>
+    </form>
+
+    <br/><br/>
+
+    <table class="tableauChatMessage">
+
+    </table>
+
+<?php endif; ?>

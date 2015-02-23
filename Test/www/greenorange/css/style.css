@@ -1,0 +1,109 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+
+    max-width: 1280px;
+    max-height: 1024px;
+}
+
+div#page {
+    width: 900px;
+    margin: auto;
+}
+
+div#nav {
+    border-bottom: 3px #72AA21 solid;
+
+}
+
+div#nav ul {
+    padding-bottom: 12px;
+}
+
+div.logo .text {
+    color: darkgray;
+    margin-top: 0px;
+    margin-left: 20px;
+}
+
+div.logo .text span {
+    text-transform: uppercase;
+}
+
+div#nav ul li {
+    display: inline-block;
+    float: right;
+    background-color: #72AA21;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 6px;
+    -webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* For Safari 3.1 to 6.0 */
+    transition: width 2s, height 2s, transform 2s;
+
+}
+
+div#nav ul li:hover {
+    -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+    transform: rotate(360deg);
+
+}
+
+div#nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+div.logo {
+    float: left;
+}
+
+div.article {
+    float: left;
+    width: 430px;
+}
+
+div.article h1, h3 {
+    color: #FFCF4C;
+}
+
+div.article img {
+    text-align: center;
+}
+
+div.article ul li {
+    list-style-image: url("../img/puce.png");
+    background-color: gainsboro;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    color: green;
+    font-weight: bold;
+    padding-left: 10px;
+    font-size: 0.7rem;
+
+}
+
+div.article ul li span {
+    height: 14px;
+    margin: 2px 0px 0px;
+    padding-bottom: 0px;
+    position: absolute;
+}
+
+
+div.article p {
+    margin: 0px;
+    text-align: justify;
+    width: 400px;
+    font-size: 0.8rem;
+}
+
+div#footer {
+    float: right;
+}

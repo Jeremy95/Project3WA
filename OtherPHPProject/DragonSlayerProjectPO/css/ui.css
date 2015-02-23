@@ -1,0 +1,173 @@
+/*
+ * Styles de l'écran de fin du jeu.
+ */
+.ui-game-map
+{
+    height: 584px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 550px;
+}
+.ui-game-map canvas
+{
+    display: block;
+
+    margin: 0 auto;
+}
+.ui-game-map p
+{
+    /* structure */
+    height: 114px;
+
+    /* presentation */
+    color: #0666C5;
+    text-align: justify;
+}
+
+
+/*
+ * Styles du menu de démarrage.
+ */
+.ui-game-menu
+{
+    margin: 0 auto;
+    top: 150px;
+    width: 50%;
+}
+.ui-game-menu fieldset
+{
+    border-radius: 6px;
+    border: 1px dashed #3B0822;
+    color: #3B0822;
+    text-align: center;
+}
+.ui-game-menu fieldset legend
+{
+    /* structure */
+    padding: 0 0.5em;
+
+    /* presentation */
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.25em;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.ui-game-menu ul
+{
+    /* structure */
+    margin: 0;
+    padding-left: 0;
+
+    /* presentation */
+    list-style-type: none;
+}
+.ui-game-menu ul li
+{
+    padding: 0.5em 0;
+}
+.ui-game-menu ul li label:not(.radio)
+{
+    /* structure */
+    display: block;
+
+    /* presentation */
+    font-weight: bold;
+}
+.ui-game-menu ul li input[type="button"],
+.ui-game-menu ul li input[type="text"],
+.ui-game-menu ul li select
+{
+    width: 300px;
+}
+
+
+/*
+ * Styles de l'écran de fin du jeu.
+ */
+.ui-game-over
+{
+    /* structure */
+    height: 584px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 550px;
+
+    /* presentation */
+    text-align: center;
+}
+.ui-game-over img
+{
+    border-radius: 4px;
+}
+.ui-game-over p
+{
+    color: #0666C5;
+}
+
+
+/*
+ * Styles du panneau affichant l'état du jeu.
+ */
+.ui-game-state
+{
+    height: 180px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 250px;
+}
+
+
+/*
+ * Styles du titre du jeu.
+ */
+.ui-game-title
+{
+    /* structure */
+    top: 250px;
+
+    /* presentation */
+    text-align: center;
+}
+
+
+/*
+ * Styles du panneau de messages.
+ */
+.ui-message-important
+{
+    color: #AD0B04;
+}
+.ui-message-info
+{
+    color: #0CA909;
+}
+.ui-message-normal
+{
+    color: #0666C5;
+}
+
+.ui-message-panel
+{
+    height: 388px;
+    position: absolute;
+    right: 0;
+    top: 196px;
+    width: 250px;
+
+}
+.ui-message-panel ul
+{
+    /* structure */
+    height: 100%;
+    margin: 0;
+    overflow-y: scroll;
+    padding-left: 0;
+
+    /* presentation */
+    font-size: 0.825em;
+    list-style-type: none;
+}
