@@ -1,0 +1,26 @@
+<h2>New student ? go suscribe here !</h2>
+<form action="" method="post" id="addStudent">
+    <div class="form-group" id="nameGroup">
+        <label for="name">Name</label>
+        <input name="name" type="text" class="form-control" id="name" placeholder=" Enter you're name...">
+    </div>
+    <div class="form-group" id="birthdayGroup">
+        <label for="birthday">Birthday</label>
+        <input name="birthday" type="date" class="form-control" id="birthday" placeholder="Enter you're birthday...">
+    </div>
+    <div class="form-group" id="postalCodeGroup">
+        <label for="postalCode">Postal code</label>
+        <input name="postalCode" type="number" class="form-control" id="postalCode" placeholder="Enter you're postal code... ">
+    </div>
+    <div class="form-group">
+        <label for="city_id">City</label>
+        <select disabled name="city_id" id="city_id" class="form-control">
+            <option value="">Entrez un code postal</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<table id="queryResult">
+
+</table>
