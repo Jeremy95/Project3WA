@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acebbfaa-9227-4a0a-83f0-52a52b4a830d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Project3WA.iml" afterPath="$PROJECT_DIR$/.idea/Project3WA.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/POOProject/index.php" afterPath="$PROJECT_DIR$/POOProject/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BlogProjectPOO/View/footerView.phtml" afterPath="$PROJECT_DIR$/BlogProjectPOO/View/footerView.phtml" />
     </list>
     <ignored path="Project3WA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="footerView.phtml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="footerView.phtml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BlogProjectPOO/View/footerView.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="120">
-              <caret line="0" column="21" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.02354788" vertical-offset="0" max-vertical-offset="1274">
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -91,10 +89,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BlogProjectPOO/register.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26169705" vertical-offset="0" max-vertical-offset="1261">
+            <state vertical-scroll-proportion="-13.75" vertical-offset="0" max-vertical-offset="420">
               <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
@@ -175,8 +173,8 @@
         <option value="$PROJECT_DIR$/BlogProjectPOO/login.php" />
         <option value="$PROJECT_DIR$/BlogProjectPOO/register.php" />
         <option value="$PROJECT_DIR$/BlogProjectPOO/Model/User.class.php" />
-        <option value="$PROJECT_DIR$/BlogProjectPOO/View/footerView.phtml" />
         <option value="$PROJECT_DIR$/BlogProjectPOO/View/headView.phtml" />
+        <option value="$PROJECT_DIR$/BlogProjectPOO/View/footerView.phtml" />
       </list>
     </option>
   </component>
@@ -860,14 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BlogProjectPOO/View/footerView.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1274">
-          <caret line="0" column="21" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BlogProjectPOO/View/headView.phtml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.125" vertical-offset="0" max-vertical-offset="270">
@@ -905,8 +895,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BlogProjectPOO/register.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26169705" vertical-offset="0" max-vertical-offset="1261">
+        <state vertical-scroll-proportion="-13.75" vertical-offset="0" max-vertical-offset="420">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BlogProjectPOO/View/footerView.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02354788" vertical-offset="0" max-vertical-offset="1274">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding />
         </state>
       </provider>
