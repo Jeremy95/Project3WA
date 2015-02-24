@@ -16,12 +16,12 @@ function addUser(event)
 
     var postValues =
     {
-        "email" : $('#email').val(),
-        "pwd"   : $('#pwd').val(),
-        "name"  : $('#name').val()
+        email : $('#email').val(),
+        pwd   : $('#pwd').val(),
+        name  : $('#name').val()
     };
 
-    $('.alert').hide();
+    $('.alert-danger').hide();
 
     if(postValues.email == "")
     {
@@ -51,12 +51,12 @@ function addUser(event)
 function addSuccess(data)
 {
     var elem = $('#queryResult');
-    if(data.contains("kjhgf"))
+    if(jQuery.inArray("kjhgf", data))
     {
         elem.html('Félicitations vous êtes maintenant inscrit !');
 
         $('#divQueryResult').delay(1000).fadeOut(1000, function () {
-            setTimeout(window.location = "index.php", 1000);
+            setTimeout(window.location = "login.php", 1000);
         });
     }
     else
@@ -67,13 +67,16 @@ function addSuccess(data)
 function verifUser(event)
 {
     event.preventDefault();
+
+    var $this = $(this);
+
     var postValues =
     {
-        "login" : $('#login').val(),
-        "pwd"   : $('#pwd').val()
+        login : $('#login').val(),
+        pwd   : $('#pwd').val()
     };
 
-    $('.alert').hide();
+    $('.alert-danger').hide();
 
     if(postValues.login == "")
     {
@@ -85,26 +88,23 @@ function verifUser(event)
     }
     else
     {
-        var login = postValues.email;
-
-        var config =
-        {
-            url     : "login.php",
-            type    : "POST",
-            data    : postValues
-        };
-        $.ajax(config).done(function(data)
-        {
-            if(data.contains("ok"))
+        $.ajax({
+            data: $this.serialize(),
+            dataType: 'json', // JSON
+            url      : $this.attr('action'),
+            type     : $this.attr('method'),
+            success: function(data)
             {
-                alert("Bienvenue ! " + login);
-                window.location = "post.php";
+                if(data.reponse == "ok")
+                {
+                    window.location = "post.php";
+                }
+                else
+                {
+                    $('#alert').html("Votre login ou votre mot de passe est incorrect");
+                    $('#alert').addClass("alert-danger");
+                }
             }
-            else if(data.contains("Votre login ou votre mot de passe est incorrect"))
-            {
-                $('.alert').html("Votre login ou votre mot de passe est incorrect");
-            }
-
         });
     }
 }
@@ -115,9 +115,9 @@ function addArticle(event)
 
     var postValues =
     {
-        "content": $('#content').val(),
-        "idUser" : $('#idUser').val(),
-        "title"  : $('#title').val()
+        content: $('#content').val(),
+        idUser : $('#idUser').val(),
+        title  : $('#title').val()
     };
 
     if(postValues.title == "")
@@ -139,7 +139,7 @@ function addArticle(event)
 
         $.ajax(config).done(function(data)
         {
-            if(data.contains("koiwp"))
+            if(jQuery.inArray("koiwp", data))
             {
                 window.location = "post.php";
             }
@@ -150,5 +150,6 @@ function addArticle(event)
         });
     }
 }
+
 
 

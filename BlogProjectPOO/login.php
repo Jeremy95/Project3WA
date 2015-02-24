@@ -14,24 +14,24 @@ include_once "View/loginView.phtml";
 include_once "View/footerView.phtml";
 
 $userManager = new User();
-$message = "";
+
 if(array_key_exists("login", $_POST))
 {
     if($userManager->verifLogin($_POST["login"], $_POST["pwd"]) != false)
     {
-        $message = "ok";
         $_SESSION['id'] = $userManager->getId();
         $_SESSION['email'] = $userManager->getEmail();
         $_SESSION['username'] = $userManager->getUsername();
+        $reponse = 'ok';
     }
     else
     {
-        $message = "Votre login ou votre mot de passe est incorrect";
+        $reponse = 'Le login ou le mot de passe est incorrecte';
     }
 
-    $json = json_encode($message);
-    echo $json;
-
 }
+
+if(isset($reponse))
+    echo json_encode(['reponse' => $reponse]);
 
 
