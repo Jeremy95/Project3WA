@@ -6,11 +6,13 @@
  * Time: 14:57
  */
 
-require "Helper/DatabaseHelper.class.php";
+include_once "View/headView.phtml";
+require_once "Helper/DatabaseHelper.class.php";
 
-$articles = new DatabaseHelper("mysql:host=localhost; dbname=blog", "root", "troiswa");
+$articles = new DatabaseHelper();
 $articlesDisplay = $articles->fetchAll("SELECT *
                                         FROM article
                                         ORDER BY date_article DESC");
 
 include_once "View/homeView.phtml";
+include_once "View/footerView.phtml";

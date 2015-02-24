@@ -15,8 +15,8 @@ $userManager = new User();
 
 if(array_key_exists("email", $_POST) && array_key_exists("pwd", $_POST))
 {
-    if($userManager->addUser(htmlentities($_POST['email']), password_hash($_POST['pwd'], PASSWORD_DEFAULT)) == "ok")
-        echo "ok";
+    $userManager->addUser(htmlentities($_POST['email']), password_hash($_POST['pwd'], PASSWORD_DEFAULT));
+    echo "kjhgf";
 }
 
 

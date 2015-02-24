@@ -7,6 +7,6 @@
  */
 include "View/headView.phtml";
 
-include_once "post.php";
+include_once "login.php";
 
 include "View/footerView.phtml";

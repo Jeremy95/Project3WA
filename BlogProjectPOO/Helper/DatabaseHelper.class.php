@@ -13,7 +13,7 @@ class DatabaseHelper
 
     public function __construct()
     {
-        $this->path = new PDO("mysql:host=localhost; dbname=blog", "root", "troiswa");
+        $this->path = new PDO("mysql:host=localhost; dbname=blog", "root", "root");
         $this->path->exec("SET NAMES UTF8");
         $this->path->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
@@ -45,16 +45,16 @@ class DatabaseHelper
         return $lastId;
     }
 
-    public function insertIntoDatabase($query)
+    public function insertIntoDatabase($query, $data)
     {
         try
         {
             $query = $this->path->prepare($query);
-            $query->execute();
+            $query->execute($data);
         }
         catch (Exception $e)
         {
-            echo "L'insertion a échoué : ", $e->getMessage(), "\n";
+            echo "L'insertion a échoué : ".$e->getMessage()."\n";
         }
     }
 }

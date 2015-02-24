@@ -21,13 +21,16 @@
         </div>
     </div>
 </div>
-
+<?php endforeach; ?>
     <div class="col-md-4">
         <div class="well">
+            <?php if(array_key_exists("id", $_SESSION)) : ?>
+            <p>Hello <?= $_SESSION["email"]; ?></p>
+            <?php else : ?>
             <p>Hello there stranger! ◕ ◡ ◕</p>
+            <?php endif; ?>
             <ul class="list-unstyled">
                 <li><a href="login.php">Login</a></li>
             </ul>
         </div>
     </div>
-<?php endforeach; ?>

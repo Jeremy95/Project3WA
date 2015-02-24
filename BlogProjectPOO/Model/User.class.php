@@ -12,6 +12,17 @@ class User
     public $email;
     private $db;
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+
 
     public function __construct()
     {
@@ -22,7 +33,7 @@ class User
     {
         $res = $this->db->fetchOne("SELECT *
                                     FROM user
-                                    WHERE email = $login");
+                                    WHERE email = :login", array(':login' => $login));
         if($res)
         {
             $user = new User();
@@ -41,10 +52,7 @@ class User
 
     public function addUser($email, $pwd)
     {
-        $res = $this->db->insertIntoDatabase("INSERT INTO user (email, password)
-                                       VALUES ($email, $pwd)");
-
-        if($res)
-            echo "ok";
+        $this->db->insertIntoDatabase('INSERT INTO user(email, password)
+                       VALUES(:email, :pwd)', array(':email' => $email, ':pwd' => $pwd));
     }
 }
