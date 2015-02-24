@@ -5,14 +5,24 @@
  * Date: 23/02/15
  * Time: 14:57
  */
-
+if(!isset($_SESSION))
+    session_start();
 include_once "View/headView.phtml";
 require_once "Helper/DatabaseHelper.class.php";
+require_once "Model/Article.class.php";
 
-$articles = new DatabaseHelper();
-$articlesDisplay = $articles->fetchAll("SELECT *
-                                        FROM article
-                                        ORDER BY date_article DESC");
+if(array_key_exists('id', $_SESSION))
+{
+    $articles = new Article();
+    $articlesDisplay = $articles->getArticle();
+}
+else
+{
+    echo "<script>
+            window.location = 'index.php';
+        </script>";
+}
+
 
 include_once "View/homeView.phtml";
 include_once "View/footerView.phtml";
