@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="acebbfaa-9227-4a0a-83f0-52a52b4a830d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BlogProjectPOO/View/footerView.phtml" afterPath="$PROJECT_DIR$/BlogProjectPOO/View/footerView.phtml" />
-    </list>
+    <list default="true" id="acebbfaa-9227-4a0a-83f0-52a52b4a830d" name="Default" comment="" />
     <ignored path="Project3WA.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -59,20 +57,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BlogProjectPOO/assets/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+            <state vertical-scroll-proportion="0.6303502" vertical-offset="0" max-vertical-offset="1285">
               <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="footerView.phtml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="footerView.phtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BlogProjectPOO/View/footerView.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.02354788" vertical-offset="0" max-vertical-offset="1274">
+            <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="120">
               <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
               <folding />
             </state>
@@ -866,14 +864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BlogProjectPOO/assets/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
-          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BlogProjectPOO/Model/User.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-27.5" vertical-offset="0" max-vertical-offset="750">
@@ -882,6 +872,14 @@
             <marker date="1424707206338" expanded="true" signature="331:436" placeholder="SELECT * FRO..user..." />
             <marker date="1424707206338" expanded="true" signature="886:981" placeholder="INSERT INTO ..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BlogProjectPOO/View/footerView.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="120">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -901,10 +899,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BlogProjectPOO/View/footerView.phtml">
+    <entry file="file://$PROJECT_DIR$/BlogProjectPOO/assets/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02354788" vertical-offset="0" max-vertical-offset="1274">
-          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.6303502" vertical-offset="0" max-vertical-offset="1285">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding />
         </state>
       </provider>
