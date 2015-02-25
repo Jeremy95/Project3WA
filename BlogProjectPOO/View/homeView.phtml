@@ -1,33 +1,44 @@
-<?php foreach($articlesDisplay as $value) : ?>
-<div class="blogpost clearfix">
-    <div class="panel panel-default">
-        <div class="panel-body narrow">
-            <h2><?= $value['title']; ?></h2>
-            <hr>
-            <p class="post-header">
-                <a href="post.php?id=5#comments">
-                    <span class="pull-right"><span class="glyphicon glyphicon-comment"></span> </span>
-                </a>
-                <span class="glyphicon glyphicon-user"></span>
-                Mallory
-                <span class="glyphicon glyphicon-time"></span>
-                <?= date($value['date_article']); ?>
-                <br>
-            </p>
-            <p></p>
-            <hr>
-            <p><?= $value['content_article']; ?></p>
-            <a href="post.php?id=5" class="pull-right readmore"><button class="btn btn-default" type="button">Read More</button></a>
+<div class="container">
+    <?php foreach($articlesDisplay as $value) : ?>
+        <div class="blogpost clearfix">
+            <div class="panel panel-default">
+                <div class="panel-body narrow">
+                    <h2><?= $value['title']; ?></h2>
+                    <hr>
+                    <p class="post-header">
+                        <a href="post.php?id=5#comments">
+                            <span class="pull-right"><span class="glyphicon glyphicon-comment"></span> </span>
+                        </a>
+                        <span class="glyphicon glyphicon-user"></span>
+                        <?= $value['username']; ?>
+                        <span class="glyphicon glyphicon-time"></span>
+                        <?= date($value['date_article']); ?>
+                        <br>
+                    </p>
+                    <p></p>
+                    <hr>
+                    <p><?= $value['content_article']; ?></p>
+                    <a href="post.php?id=5" class="pull-right readmore"><button class="btn btn-default" type="button">Read More</button></a>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+
+    <div class="col-md-4">
+        <div class="well">
+            <?php if(array_key_exists("id", $_SESSION)) : ?>
+                <p>Hello <?= $_SESSION["username"]; ?></p>
+                <ul class="list-unstyled">
+                    <li><a href="logout.php">Logout</a></li>
+                    <li><a href="createpost.php">Create post</a></li>
+                </ul>
+            <?php else : ?>
+                <p>Hello there stranger! ◕ ◡ ◕ </p>
+                <ul class="list-unstyled">
+                    <li><a href="login.php">Login</a></li>
+                </ul>
+            <?php endif; ?>
         </div>
     </div>
 </div>
 
-    <div class="col-md-4">
-        <div class="well">
-            <p>Hello there stranger! ◕ ◡ ◕</p>
-            <ul class="list-unstyled">
-                <li><a href="login.php">Login</a></li>
-            </ul>
-        </div>
-    </div>
-<?php endforeach; ?>

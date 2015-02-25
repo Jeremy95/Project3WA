@@ -11,6 +11,23 @@ class User
     private $id;
     public $email;
     private $db;
+    public $username;
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
 
 
     public function __construct()
@@ -22,14 +39,14 @@ class User
     {
         $res = $this->db->fetchOne("SELECT *
                                     FROM user
-                                    WHERE email = $login");
+                                    WHERE email = :login", array(':login' => $login));
         if($res)
         {
-            $user = new User();
-            $user->id = $res['id'];
-            $user->email = $res['email'];
+            $this-> id = $res['id'];
+            $this->email = $res['email'];
+            $this->username = $res['username'];
             if(password_verify($pwd, $res['password']))
-                return $user;
+                return true;
             else
                 return false;
         }
@@ -39,12 +56,9 @@ class User
         }
     }
 
-    public function addUser($email, $pwd)
+    public function setUser($email, $pwd, $username)
     {
-        $res = $this->db->insertIntoDatabase("INSERT INTO user (email, password)
-                                       VALUES ($email, $pwd)");
-
-        if($res)
-            echo "ok";
+        $this->db->insertIntoDatabase('INSERT INTO user(email, password, username)
+                       VALUES(:email, :pwd, :username)', array(':email' => $email, ':pwd' => $pwd, ':username' => $username));
     }
 }
