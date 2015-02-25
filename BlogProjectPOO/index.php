@@ -6,9 +6,13 @@
  * Time: 14:17
  */
 if(!isset($_SESSION))
+{
     session_start();
-include "View/headView.phtml";
+    include_once "login.php";
+}
+else
+{
+    if(array_key_exists("id", $_SESSION))
+        include_once "post.php";
+}
 
-include_once "login.php";
-
-include "View/footerView.phtml";

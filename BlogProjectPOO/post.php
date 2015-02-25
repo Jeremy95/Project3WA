@@ -16,12 +16,7 @@ if(array_key_exists('id', $_SESSION))
     $articles = new Article();
     $articlesDisplay = $articles->getArticle();
 }
-else
-{
-    echo "<script>
-            window.location = 'index.php';
-        </script>";
-}
+
 
 
 include_once "View/homeView.phtml";
