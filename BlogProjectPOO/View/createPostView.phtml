@@ -1,6 +1,6 @@
 <div class="container">
     <?php if(array_key_exists("id", $_SESSION)) : ?>
-        <form action="" method="post" id="addArticle" enctype="multipart/form-data">
+        <form action="createpost.php" method="post" id="addArticle" enctype="multipart/form-data">
             <div class="form-group" id="titleGroup">
                 <label for="title">Titre</label>
                 <input class="form-control" type="text" name="title" id="title"/>
@@ -11,7 +11,7 @@
             </div>
             <div class="form-group" id="pictureGroup">
                 <label for="picture">Image</label>
-                <input type="file" name="picture" id="picture"/>
+                <input type="file" name="picture[]" id="picture" multiple/>
             </div>
             <div class="form-group" id="contentGroup">
                 <label for="content">Contenu de mon article</label><br/>

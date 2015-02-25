@@ -7,11 +7,10 @@
  */
 if(!isset($_SESSION))
     session_start();
-include_once "View/headView.phtml";
+
 require_once "Helper/DatabaseHelper.class.php";
 require_once "Model/User.class.php";
-include_once "View/loginView.phtml";
-include_once "View/footerView.phtml";
+
 
 $userManager = new User();
 
@@ -31,7 +30,13 @@ if(array_key_exists("login", $_POST))
 
 }
 
-if(isset($reponse))
-    echo json_encode(['reponse' => $reponse]);
+/* Verifie si la requête est fait en AJAX */
+if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+
+    die($reponse);
+}
 
 
+include_once "View/headView.phtml";
+include_once "View/loginView.phtml";
+include_once "View/footerView.phtml";

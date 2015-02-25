@@ -1,0 +1,17 @@
+<form action="upload_multiple.php" method="post" id="addPicture" enctype="multipart/form-data">
+    <div class="form-group" id="pictureGroup">
+        <label for="picture">Image</label>
+        <input type="file" name="picture[]" id="picture" multiple/>
+    </div>
+    <button type="submit">Envoyez</button>
+</form>
+
+<?php if(isset($fileList)) : ?>
+    <?php for($i = 0; $i < sizeof($fileList); $i++) : ?>
+
+        <?php if ($fileList[$i][0] != "." ) : ?>
+            <img src="files/<?=$fileList[$i]?>">
+        <?php endif ?>
+
+    <?php endfor; ?>
+<?php endif; ?>

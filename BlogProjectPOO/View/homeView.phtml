@@ -17,8 +17,17 @@
                     </p>
                     <p></p>
                     <hr>
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <?php foreach($value["image"] as $valueImg) : ?>
+                                <li>
+                                    <img src="<?= $valueImg["url"]; ?>" draggable="false">
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
                     <p><?= $value['content_article']; ?></p>
-                    <a href="post.php?id=5" class="pull-right readmore"><button class="btn btn-default" type="button">Read More</button></a>
+                    <a id="readMore" href="post.php?id=<?= $value["id"]; ?>" class="pull-right readmore"><button class="btn btn-default" type="button">Read More</button></a>
                 </div>
             </div>
         </div>

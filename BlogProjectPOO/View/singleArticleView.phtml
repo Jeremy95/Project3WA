@@ -1,0 +1,51 @@
+<div class="container noreadmore">
+    <div class="blogpost clearfix">
+        <div class="panel panel-default">
+            <div class="panel-body narrow">
+                <h2>
+                    <a href="post.php?id=<?= $oneArticle['id']; ?>"><?= $oneArticle["title"]; ?></a></h2>
+                <hr>
+                <p class="post-header">
+                    <a href="post.php?id=23#comments">
+                        <span class="pull-right"><span class="glyphicon glyphicon-comment"></span> Comments [1]</span>
+                    </a>
+                    <span class="glyphicon glyphicon-user"></span>
+                    <?= $oneArticle['username']; ?><span class="glyphicon glyphicon-time"></span>
+                    <?= $oneArticle['date_article']; ?><br>
+                </p><p>
+                    <a href="tags.php?tag=cute"><span class="btn btn-default btn-xs"><span class="glyphicon glyphicon-tag"></span> cute</span></a>
+                </p>
+                <p></p>
+                <hr>
+                <div class="flexslider">
+                    <ul class="slides">
+                        <?php if(sizeof($oneArticle['image']) > 0) : ?>
+                            <?php foreach($oneArticle["image"] as $valueImg) : ?>
+                                <li>
+                                    <img src="<?= $valueImg['url']; ?>" draggable="false">
+                                </li>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+                <p><?= $oneArticle['content_article']; ?></p>
+                <a href="post.php?id=<?= $oneArticle['id']; ?>" class="pull-right readmore"><button class="btn btn-default" type="button">Read More</button></a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row well">
+        <blockquote>
+            <p>salut</p>
+            <footer>
+                <span class="glyphicon glyphicon-user"></span>
+                alex						<span class="glyphicon glyphicon-time"></span>
+                lundi 23 février 2015					</footer>
+        </blockquote>
+    </div>
+
+
+
+</div>

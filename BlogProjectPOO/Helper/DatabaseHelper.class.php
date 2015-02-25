@@ -13,7 +13,7 @@ class DatabaseHelper
 
     public function __construct()
     {
-        $this->path = new PDO("mysql:host=localhost; dbname=blog", "root", "root");
+        $this->path = new PDO("mysql:host=localhost; dbname=blog", "root", "troiswa");
         $this->path->exec("SET NAMES UTF8");
         $this->path->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
@@ -22,7 +22,7 @@ class DatabaseHelper
     {
         $query = $this->path->prepare($query);
         $query->execute($data);
-        $res = $query->fetchAll();
+        $res = $query->fetchAll(PDO::FETCH_ASSOC);
 
         return $res;
     }
@@ -31,19 +31,11 @@ class DatabaseHelper
     {
         $query = $this->path->prepare($query);
         $query->execute($data);
-        $res = $query->fetch();
+        $res = $query->fetch(PDO::FETCH_ASSOC);
 
         return $res;
     }
 
-    public function getLastInsertId($queryString)
-    {
-        $query = $this->path->prepare($queryString);
-        $query->execute();
-        $lastId = $this->path->lastInsertId();
-
-        return $lastId;
-    }
 
     public function insertIntoDatabase($query, $data)
     {
@@ -51,10 +43,12 @@ class DatabaseHelper
         {
             $query = $this->path->prepare($query);
             $query->execute($data);
+            return $this->path->lastInsertId();
         }
         catch (Exception $e)
         {
             echo "L'insertion a échoué : ".$e->getMessage()."\n";
+            return false;
         }
     }
 }

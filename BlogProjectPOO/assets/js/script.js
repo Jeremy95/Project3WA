@@ -7,8 +7,32 @@
 $(function () {
     $('#addUser').on("submit", addUser);
     $('#verifUser').on("submit", verifUser);
-    $('#addArticle').on("submit", addArticle);
+    /*$('#addArticle').on("submit", addArticle);*/
+    $('.flexslider').flexslider(
+        {
+            slideshowSpeed: 4000,
+            directionNav: false,
+            controlNav: false
+        }
+    );
+    $('#readMore').on('click', searchArticle)
 });
+
+function searchArticle()
+{
+    var pattern = $(this);
+    var config =
+    {
+        url: "post.php?id=" + pattern.attr('id')
+    };
+    $.ajax(config).done(displaySingleArticle).fail();
+}
+
+function displaySingleArticle(data)
+{
+    $('').delay(500).fadeIn(500);
+}
+
 
 function addUser(event)
 {
@@ -51,7 +75,8 @@ function addUser(event)
 function addSuccess(data)
 {
     var elem = $('#queryResult');
-    if(jQuery.inArray("kjhgf", data))
+
+    if(data == "ok")
     {
         elem.html('Félicitations vous êtes maintenant inscrit !');
 
@@ -72,38 +97,35 @@ function verifUser(event)
 
     var postValues =
     {
-        login : $('#login').val(),
-        pwd   : $('#pwd').val()
+        login: $('#login').val(),
+        pwd: $('#pwd').val()
     };
 
     $('.alert-danger').hide();
 
-    if(postValues.login == "")
+    if (postValues.login == "")
     {
         $('#loginGroup').append('<div class="alert alert-danger" role="alert">Veuillez indiquez un login</div>');
     }
-    else if(postValues.pwd == "")
+    else if (postValues.pwd == "")
     {
         $('#pwdGroup').append('<div class="alert alert-danger" role="alert">Veuillez indiquez un mot de passe</div>');
     }
     else
     {
-        $.ajax({
-            data: $this.serialize(),
-            dataType: 'json', // JSON
-            url      : $this.attr('action'),
-            type     : $this.attr('method'),
-            success: function(data)
-            {
-                if(data.reponse == "ok")
-                {
-                    window.location = "post.php";
-                }
-                else
-                {
-                    $('#alert').html("Votre login ou votre mot de passe est incorrect");
-                    $('#alert').addClass("alert-danger");
-                }
+        var config =
+        {
+            data: postValues,
+            url: "login.php",
+            type: $this.attr('method')
+        };
+        $.ajax(config).done(function (data) {
+            if (data == "ok") {
+                window.location = "post.php";
+            }
+            else {
+                $('#alert').html("Votre login ou votre mot de passe est incorrect");
+                $('#alert').addClass("alert-danger");
             }
         });
     }
@@ -139,13 +161,13 @@ function addArticle(event)
 
         $.ajax(config).done(function(data)
         {
-            if(jQuery.inArray("koiwp", data))
+            if(data == "ok")
             {
                 window.location = "post.php";
             }
             else
             {
-                $('body').append("<div class='alert alert-danger' role='alert'>L'insertion de votre artcile a échoué</div>")
+                $('body').append("<div class='alert alert-danger' role='alert'>L'insertion de votre article a échoué</div>")
             }
         });
     }

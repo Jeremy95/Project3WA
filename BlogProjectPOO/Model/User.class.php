@@ -58,7 +58,15 @@ class User
 
     public function setUser($email, $pwd, $username)
     {
-        $this->db->insertIntoDatabase('INSERT INTO user(email, password, username)
+        $booleen = $this->db->insertIntoDatabase('INSERT INTO user(email, password, username)
                        VALUES(:email, :pwd, :username)', array(':email' => $email, ':pwd' => $pwd, ':username' => $username));
+        if($booleen)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
