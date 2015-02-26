@@ -11,6 +11,7 @@ if(!isset($_SESSION))
 require_once "Helper/DatabaseHelper.class.php";
 require_once "Model/Article.class.php";
 require_once "Model/Image.class.php";
+require_once "Model/Comment.class.php";
 
 if(array_key_exists('id', $_SESSION))
 {
@@ -18,28 +19,22 @@ if(array_key_exists('id', $_SESSION))
     {
         $article = new Article();
         $images = new Image();
+        $comment = new Comment();
         $oneArticle = $article->getArticle($_GET["id"]);
         $oneArticle["image"] = $images->getImgForArticle($_GET["id"]);
-        $reponse = "ok";
-
-        /* Verifie si la requête est fait en AJAX */
-        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-
-            die($reponse);
-        }
-
-        include_once "View/headView.phtml";
-        include_once "View/singleArticleView.phtml";
-        include_once "View/footerView.phtml";
+        $oneArticle["commentary"] = $comment->getCommentForAnArticle($_GET['id']);
+        die(json_encode($oneArticle));
     }
     else
     {
         $articles = new Article();
         $images = new Image();
+        $comment = new Comment();
         $articlesDisplay = $articles->getArticle();
         foreach($articlesDisplay as &$value)
         {
             $value["image"] = $images->getImgForArticle($value["id"]);
+            $value["commentary"] = $comment->getCommentForAnArticle($value['id']);
         }
 
         include_once "View/headView.phtml";

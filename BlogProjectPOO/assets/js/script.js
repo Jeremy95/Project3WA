@@ -15,7 +15,7 @@ $(function () {
             controlNav: false
         }
     );
-    $('#readMore').on('click', searchArticle)
+    $('.readMore').on('click', searchArticle);
 });
 
 function searchArticle()
@@ -30,7 +30,86 @@ function searchArticle()
 
 function displaySingleArticle(data)
 {
-    $('').delay(500).fadeIn(500);
+    var dataJson = $.parseJSON(data);
+    $('#edit-basic-information').fadeIn(1000);
+
+    $('#edit-basic-information-container').html(
+        '<div class="blogpost clearfix">' +
+        '<div class="panel panel-default">' +
+        '<div class="panel-body narrow">' +
+        '<h2>'+
+        '<a href="post.php?id="'+ dataJson["id"] + '>' + dataJson["title"] +
+        '</a></h2>' +
+        '<hr>' +
+        '<p class="post-header">'+
+        '<span class="glyphicon glyphicon-user"></span>' +
+        ' ' + dataJson['username'] + ' ' +
+        '<span class="glyphicon glyphicon-time"></span>' +
+        ' ' + dataJson['date_article'] + '<br>' +
+        '</p><p>' +
+        '<a href="tags.php?tag=cute"><span class="btn btn-default btn-xs"><span class="glyphicon glyphicon-tag"></span> cute</span></a>' +
+        '</p>' +
+        '<p></p>' +
+        '<hr>' +
+        '<div class="flexslider">' +
+        '<ul class="slides">' +
+        '</ul>' +
+        '</div>' +
+        '<p>' + dataJson["content_article"] + '</p>' +
+        '</div>' +
+        '</div>' +
+        '</div>'
+    );
+
+    if(dataJson['image'].length > 0)
+    {
+        for (var i = 0; i < dataJson["image"].length; i++)
+        {
+            $('.slides').append('<li>' +
+            '<img src="'+ dataJson["image"][i]["url"] +'">' +
+            '</li>');
+        }
+    }
+
+    if(dataJson['commentary'].length > 0)
+    {
+        for (var y = 0; y < dataJson["commentary"].length; y++)
+        {
+            $('#edit-basic-information-container').append(
+                '<div class="row well">' +
+                '<blockquote>' +
+                '<p>' +
+                dataJson["commentary"][y]["content_comment"] +
+                '</p>' +
+                '<footer>' +
+                '<span class="glyphicon glyphicon-user"></span>' +
+                ' ' + dataJson["commentary"][y]["username"] + ' ' +
+                '<span class="glyphicon glyphicon-time"></span>' +
+                ' ' + dataJson["commentary"][y]["date_comment"] +
+                '</footer>' +
+                '</blockquote>' +
+                '</div>'
+            );
+        }
+    }
+
+    $('.flexslider').flexslider(
+        {
+            slideshowSpeed: 4000,
+            directionNav: false,
+            controlNav: false
+        }
+    );
+
+    $('body').on("click", function(e)
+    {
+        e.preventDefault();
+        $('#edit-basic-information').hide();
+
+    });
+
+
+
 }
 
 

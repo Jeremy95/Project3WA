@@ -1,0 +1,33 @@
+#edit-basic-information
+{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    overflow: scroll;
+}
+
+#edit-basic-information-container
+{
+    width: 720px;
+    min-height: 552.8px;
+    background: white;
+    margin: auto;
+    margin-top: 70px;
+    padding-left: 77.38px;
+    padding-top: 27.63px;
+}
+
+.well
+{
+    width: 610px;
+}
+
+.blogpost
+{
+    width: 610px;
+}
