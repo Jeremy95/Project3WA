@@ -31,4 +31,19 @@ class Comment
 
         return $res;
     }
+
+    function setComment($id_article, $content_comment, $id_user)
+    {
+        $id = $this->db->insertIntoDatabase("INSERT INTO comment(content_comment, id_user, id_article)
+                                       VALUES (:content_comment, :id_user, :id_article)", array(
+            ':content_comment' => htmlentities($content_comment),
+            ':id_user' => $id_user,
+            ':id_article' => $id_article
+        ));
+
+        if($id != false)
+            return $id;
+        else
+            return false;
+    }
 } 

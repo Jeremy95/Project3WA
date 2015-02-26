@@ -1,24 +1,28 @@
-<div class="container">
-    <?php if(array_key_exists("id", $_SESSION)) : ?>
-        <form action="createpost.php" method="post" id="addArticle" enctype="multipart/form-data">
-            <div class="form-group" id="titleGroup">
-                <label for="title">Titre</label>
-                <input class="form-control" type="text" name="title" id="title"/>
-            </div>
-            <div class="form-group" id="tagsGroup">
-                <label for="tags">Tags</label>
-                <input class="form-control" type="text" name="tags" id="tags"/>
-            </div>
-            <div class="form-group" id="pictureGroup">
-                <label for="picture">Image</label>
-                <input type="file" name="picture[]" id="picture" multiple/>
-            </div>
-            <div class="form-group" id="contentGroup">
-                <label for="content">Contenu de mon article</label><br/>
-                <textarea name="content" id="content" cols="100" rows="10"></textarea>
-            </div>
-            <input name="idUser" id="idUser" type="hidden" value="<?= $_SESSION["id"]; ?>"/>
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-    <?php endif; ?>
+<?php if(array_key_exists("id", $_SESSION)) : ?>
+    <form action="createpost.php" method="post" id="addArticle" enctype="multipart/form-data">
+        <div class="form-group" id="titleGroup">
+            <label for="title">Titre</label>
+            <input class="form-control" type="text" name="title" id="title"/>
+        </div>
+        <div class="form-group" id="tagsGroup">
+            <label for="tags">Tags (séparer chacun de vos tags par des virgules)</label>
+            <input class="form-control" type="text" name="tags" id="tags"/>
+        </div>
+        <div class="form-group" id="pictureGroup">
+            <label for="picture">Image</label>
+            <input type="file" name="picture[]" id="picture" multiple/>
+        </div>
+        <div class="form-group" id="contentGroup">
+            <label for="content">Contenu de mon article</label><br/>
+            <textarea name="content" id="content" cols="100" rows="10"></textarea>
+        </div>
+        <input name="idUser" id="idUser" type="hidden" value="<?= $_SESSION["id"]; ?>"/>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+<?php endif; ?>
+
+
+
+<div>
+
 </div>

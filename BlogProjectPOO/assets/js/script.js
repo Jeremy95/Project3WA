@@ -52,12 +52,30 @@ function displaySingleArticle(data)
         '<p></p>' +
         '<hr>' +
         '<div class="flexslider">' +
-        '<ul class="slides">' +
+        '<ul class="slides" id="slides">' +
         '</ul>' +
         '</div>' +
         '<p>' + dataJson["content_article"] + '</p>' +
         '</div>' +
         '</div>' +
+        '</div>' +
+        '<div class="row well">' +
+        '<blockquote>' +
+        '<h4>Ecrivez un commentaire...</h4>' +
+        '<form action="" method="post" id="addComment">' +
+        '<textarea name="content_comment" id="content_comment" cols="50" rows="3">' +
+        '</textarea>' +
+        '<input type="hidden" id="IdUser" name="IdUser" value="' + dataJson["id_user"] + '"/>' +
+        '<input type="hidden" id ="articleId" name="articleId" value="' + dataJson["id"] + '"/>' +
+        '<input type="submit" value="Envoyez"/>' +
+        '</form>' +
+        '</blockquote>' +
+        '</div>' +
+        '<div>' +
+        '<p class="alert-danger">' +
+        '</p>' +
+        '</div>' +
+        '<div id="row" class="row well">' +
         '</div>'
     );
 
@@ -65,7 +83,7 @@ function displaySingleArticle(data)
     {
         for (var i = 0; i < dataJson["image"].length; i++)
         {
-            $('.slides').append('<li>' +
+            $('#slides').append('<li>' +
             '<img src="'+ dataJson["image"][i]["url"] +'">' +
             '</li>');
         }
@@ -75,8 +93,7 @@ function displaySingleArticle(data)
     {
         for (var y = 0; y < dataJson["commentary"].length; y++)
         {
-            $('#edit-basic-information-container').append(
-                '<div class="row well">' +
+            $('#row').append(
                 '<blockquote>' +
                 '<p>' +
                 dataJson["commentary"][y]["content_comment"] +
@@ -87,8 +104,7 @@ function displaySingleArticle(data)
                 '<span class="glyphicon glyphicon-time"></span>' +
                 ' ' + dataJson["commentary"][y]["date_comment"] +
                 '</footer>' +
-                '</blockquote>' +
-                '</div>'
+                '</blockquote>'
             );
         }
     }
@@ -101,12 +117,71 @@ function displaySingleArticle(data)
         }
     );
 
-    $('body').on("click", function(e)
+    $('#edit-basic-information').on("click", function(e)
     {
-        e.preventDefault();
         $('#edit-basic-information').hide();
 
     });
+
+    $('#edit-basic-information-container').on("click", function(e)
+    {
+        e.stopPropagation();
+
+    });
+
+
+    $('#addComment').on("submit", addComment);
+
+
+}
+
+function addComment(event)
+{
+    event.preventDefault();
+
+    var postValues =
+    {
+        content_comment : $('#content_comment').val(),
+        IdUser : $('#IdUser').val(),
+        articleId : $('#articleId').val()
+    };
+
+    $('.alert-danger').hide();
+
+    if(postValues.content_comment == "")
+    {
+        $('.alert-danger').html("Veuillez remplir le champ avant d'envoyé");
+    }
+    else
+    {
+        var config =
+        {
+            url: "post.php",
+            type: "POST",
+            data: postValues
+        };
+
+        $.ajax(config).done(addCommentSuccess);
+    }
+}
+
+function addCommentSuccess(data)
+{
+    var dataJson = $.parseJSON(data);
+
+    $('#row').prepend(
+        '<blockquote>' +
+        '<p>' +
+        dataJson["content_comment"] +
+        '</p>' +
+        '<footer>' +
+        '<span class="glyphicon glyphicon-user"></span>' +
+        ' ' + dataJson["username"] + ' ' +
+        '<span class="glyphicon glyphicon-time"></span>' +
+        ' ' + dataJson["date_comment"] +
+        '</footer>' +
+        '</blockquote>'
+    );
 
 
 

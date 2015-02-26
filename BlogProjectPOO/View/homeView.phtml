@@ -1,37 +1,47 @@
-<div class="container">
-    <?php foreach($articlesDisplay as $value) : ?>
-        <div class="blogpost clearfix">
-            <div class="panel panel-default">
-                <div class="panel-body narrow">
-                    <h2><?= $value['title']; ?></h2>
-                    <hr>
-                    <p class="post-header">
-                        <a id="<?= $value["id"]; ?>" class="readMore">
-                            <span class="pull-right"><span class="glyphicon glyphicon-comment"></span> Comment [<?= sizeof($value["commentary"]); ?>]</span>
-                        </a>
-                        <span class="glyphicon glyphicon-user"></span>
-                        <?= $value['username']; ?>
-                        <span class="glyphicon glyphicon-time"></span>
-                        <?= date($value['date_article']); ?>
-                        <br>
-                    </p>
-                    <p></p>
-                    <hr>
-                    <div class="flexslider">
-                        <ul class="slides">
-                            <?php foreach($value["image"] as $valueImg) : ?>
-                                <li>
-                                    <img src="<?= $valueImg["url"]; ?>" draggable="false">
-                                </li>
+<div class="row">
+    <div class="col-lg-8">
+        <?php foreach($articlesDisplay as $value) : ?>
+            <div class="blogpost clearfix">
+                <div class="panel panel-default">
+                    <div class="panel-body narrow">
+                        <h2><?= $value['title']; ?></h2>
+                        <hr>
+                        <p class="post-header">
+                            <a id="<?= $value["id"]; ?>" class="readMore">
+                                <span class="pull-right"><span class="glyphicon glyphicon-comment"></span> Comment [<?= sizeof($value["commentary"]); ?>]</span>
+                            </a>
+                            <span class="glyphicon glyphicon-user"></span>
+                            <?= $value['username']; ?>
+                            <span class="glyphicon glyphicon-time"></span>
+                            <?= date($value['date_article']); ?>
+                            <br>
+                        </p>
+                        <p>
+                            <?php foreach($value["tags"] as $valueTags) : ?>
+                            <a href=""><span class="btn btn-default btn-xs">
+                                    <span class="glyphicon glyphicon-tag">
+
+                                    </span><?= $valueTags["content_tag"]; ?></span>
+                            </a>
                             <?php endforeach; ?>
-                        </ul>
+                        </p>
+                        <hr>
+                        <div class="flexslider">
+                            <ul class="slides">
+                                <?php foreach($value["image"] as $valueImg) : ?>
+                                    <li>
+                                        <img src="<?= $valueImg["url"]; ?>" draggable="false">
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                        <p><?= $value['content_article']; ?></p>
+                        <a id="<?= $value["id"]; ?>" class="pull-right readmore readMore"><button class="btn btn-default" type="button">Read More</button></a>
                     </div>
-                    <p><?= $value['content_article']; ?></p>
-                    <a id="<?= $value["id"]; ?>" class="pull-right readmore readMore"><button class="btn btn-default" type="button">Read More</button></a>
                 </div>
             </div>
-        </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
+    </div>
 
     <div class="col-md-4">
         <div class="well">
@@ -50,6 +60,7 @@
         </div>
     </div>
 </div>
+
 
 <div id="edit-basic-information">
     <div id="edit-basic-information-container">

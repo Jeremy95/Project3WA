@@ -1,3 +1,8 @@
+body
+{
+    padding-top: 60px;
+}
+
 #edit-basic-information
 {
     position: fixed;
@@ -31,3 +36,5 @@
 {
     width: 610px;
 }
+
+
