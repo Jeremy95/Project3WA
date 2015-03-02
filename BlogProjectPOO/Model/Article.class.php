@@ -6,7 +6,7 @@
  * Time: 11:27
  */
 
-class Article
+class Model_Article
 {
     public $id;
     public $title;
@@ -18,7 +18,7 @@ class Article
 
     public function __construct()
     {
-        $this->db = new DatabaseHelper();
+        $this->db = new Helper_Database();
     }
 
     function setArticle($contentArticle, $idUser, $title)
@@ -37,18 +37,18 @@ class Article
 
     }
 
-    function getArticle($id = false)
+    function getArticle($id = false, $min = 0, $max = 0)
     {
         if($id != false)
         {
-             $res = $this->db->fetchOne("SELECT a.*, u.username, u.id as id_user
+            $res = $this->db->fetchOne("SELECT a.*, u.username, u.id as id_user
                              FROM article a
                              JOIN user u
                              ON u.id = a.id_user
                              WHERE a.id = :id
                              ORDER BY date_article DESC", array(
-                 ':id' => $id
-             ));
+                ':id' => $id
+            ));
         }
         else
         {
@@ -56,12 +56,21 @@ class Article
                              FROM article a
                              JOIN user u
                              ON u.id = a.id_user
-                             ORDER BY date_article DESC");
-
+                             ORDER BY date_article DESC
+                             LIMIT $min,$max");
 
         }
 
         return $res;
+    }
+
+    function countArticle()
+    {
+        $res = $this->db->fetchOne("SELECT COUNT(*)
+                                    AS total
+                                    FROM article");
+
+        return $res["total"];
     }
 
     function deleteArticle($id_article)

@@ -6,14 +6,14 @@
  * Time: 18:29
  */
 
-class Tag
+class Model_Tag
 {
     public $id;
     private $db;
 
     function __construct()
     {
-        $this->db = new DatabaseHelper();
+        $this->db = new Helper_Database();
     }
 
     function getTagForArticle($id_article)

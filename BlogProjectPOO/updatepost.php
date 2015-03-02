@@ -5,18 +5,13 @@
  * Date: 27/02/15
  * Time: 00:18
  */
-if(!isset($_SESSION))
-    session_start();
 
-require "Helper/DatabaseHelper.class.php";
-require "Model/Article.class.php";
-require "Model/Image.class.php";
-require "Model/Tag.class.php";
+require "initialize.php";
 
-$helper = new DatabaseHelper();
-$article = new Article();
-$images = new Image();
-$tag = new Tag();
+$helper = new Helper_Database();
+$article = new Model_Article();
+$images = new Model_Image();
+$tag = new Model_Tag();
 
 if(array_key_exists("id", $_GET))
 {

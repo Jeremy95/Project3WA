@@ -6,7 +6,7 @@
  * Time: 00:04
  */
 
-class Comment
+class Model_Comment
 {
     public $id;
     private $db;
@@ -16,7 +16,7 @@ class Comment
 
     function __construct()
     {
-        $this->db = new DatabaseHelper();
+        $this->db = new Helper_Database();
     }
 
     function getCommentForAnArticle($id_article)

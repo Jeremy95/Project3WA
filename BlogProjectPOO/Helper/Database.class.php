@@ -6,14 +6,14 @@
  * Time: 14:39
  */
 
-class DatabaseHelper
+class Helper_Database
 {
     private $path;
 
 
     public function __construct()
     {
-        $this->path = new PDO("mysql:host=localhost; dbname=blog", "root", "root");
+        $this->path = new PDO("mysql:host=localhost; dbname=blog", "root", "troiswa");
         $this->path->exec("SET NAMES UTF8");
         $this->path->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }

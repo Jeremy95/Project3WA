@@ -6,7 +6,7 @@
  * Time: 14:46
  */
 
-class User
+class Model_User
 {
     private $id;
     public $email;
@@ -32,7 +32,7 @@ class User
 
     public function __construct()
     {
-        $this->db = new DatabaseHelper();
+        $this->db = new Helper_Database();
     }
 
     public function verifLogin($login, $pwd)

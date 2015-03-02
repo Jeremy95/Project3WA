@@ -6,7 +6,7 @@
  * Time: 11:59
  */
 
-class Image
+class Model_Image
 {
     public $id;
     private $db;
@@ -14,7 +14,7 @@ class Image
 
     function __construct()
     {
-        $this->db = new DatabaseHelper();
+        $this->db = new Helper_Database();
     }
 
     function getId()

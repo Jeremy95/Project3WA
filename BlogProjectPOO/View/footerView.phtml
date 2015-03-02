@@ -1,4 +1,17 @@
 </div>
 <script src="assets/js/script.js"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 text-center">
+            <div role="group" class="btn-group">
+                <?php if(isset($count)) : ?>
+                <?php for($i=0; $i<$count; $i++) : ?>
+                <a class="btn btn-primary" type="button" href="post.php?page=<?= $i + 1 ?>"><?= $i + 1?></a>
+                <?php endfor; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

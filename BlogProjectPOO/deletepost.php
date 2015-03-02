@@ -5,21 +5,15 @@
  * Date: 23/02/15
  * Time: 14:57
  */
-if(!isset($_SESSION))
-    session_start();
 
-require "Helper/DatabaseHelper.class.php";
-require "Model/Article.class.php";
-require "Model/Image.class.php";
-require "Model/Tag.class.php";
-require "Model/Comment.class.php";
+require "initialize.php";
 
 
-$articleManager = new Article();
-$helperDatabase = new DatabaseHelper();
-$imageManager = new Image();
-$tagManager = new Tag();
-$commentManager = new Comment();
+$articleManager = new Model_Article();
+$helperDatabase = new Helper_Database();
+$imageManager = new Model_Image();
+$tagManager = new Model_Tag();
+$commentManager = new Model_Comment();
 
 if(array_key_exists("id", $_GET))
 {

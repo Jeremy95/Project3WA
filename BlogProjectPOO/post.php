@@ -5,23 +5,33 @@
  * Date: 23/02/15
  * Time: 14:57
  */
-if(!isset($_SESSION))
-    session_start();
+require "initialize.php";
 
-require_once "Helper/DatabaseHelper.class.php";
-require_once "Model/Article.class.php";
-require_once "Model/Image.class.php";
-require_once "Model/Comment.class.php";
-require_once "Model/Tag.class.php";
+$article = new Model_Article();
+$images = new Model_Image();
+$comment = new Model_Comment();
+$tag = new Model_Tag();
+
+if(array_key_exists("page", $_GET) == false)
+{
+    $page = 1;
+}
+else if(is_numeric($_GET["page"]) == false)
+{
+    $page = 1;
+}
+else
+{
+    $page = $_GET["page"];
+}
+
+$max = 3;
+$min = ($page - 1)*$max;
 
 if(array_key_exists('id', $_SESSION))
 {
     if(isset($_GET["id"]))
     {
-        $article = new Article();
-        $images = new Image();
-        $comment = new Comment();
-        $tag = new Tag();
         $oneArticle = $article->getArticle($_GET["id"]);
         $oneArticle["image"] = $images->getImgForArticle($_GET["id"]);
         $oneArticle["commentary"] = $comment->getCommentForAnArticle($_GET['id']);
@@ -30,7 +40,7 @@ if(array_key_exists('id', $_SESSION))
     }
     else if(isset($_POST["content_comment"]))
     {
-        $comments = new Comment();
+        $comments = new Model_Comment();
         $id_comment = $comments->setComment($_POST["articleId"], $_POST["content_comment"], $_SESSION["id"]);
         $reponse = null;
         if($id_comment != false)
@@ -47,16 +57,14 @@ if(array_key_exists('id', $_SESSION))
     }
     else
     {
-        $articles = new Article();
-        $images = new Image();
-        $comment = new Comment();
-        $tags = new Tag();
-        $articlesDisplay = $articles->getArticle();
+
+        $articlesDisplay = $article->getArticle(false, $min, $max);
+        $count = $article->countArticle() / $max;
         foreach($articlesDisplay as &$value)
         {
             $value["image"] = $images->getImgForArticle($value["id"]);
             $value["commentary"] = $comment->getCommentForAnArticle($value['id']);
-            $value["tags"] = $tags->getTagForArticle($value["id"]);
+            $value["tags"] = $tag->getTagForArticle($value["id"]);
         }
 
         include_once "View/headView.phtml";

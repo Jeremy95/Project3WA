@@ -5,14 +5,10 @@
  * Date: 23/02/15
  * Time: 14:56
  */
-if(!isset($_SESSION))
-    session_start();
-
-require "Helper/DatabaseHelper.class.php";
-require "Model/User.class.php";
+require "initialize.php";
 
 
-$userManager = new User();
+$userManager = new Model_User();
 
 if(array_key_exists("email", $_POST) && array_key_exists("pwd", $_POST) && array_key_exists("name", $_POST))
 {
