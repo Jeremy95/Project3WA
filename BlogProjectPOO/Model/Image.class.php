@@ -51,4 +51,22 @@ class Image
         return $res;
     }
 
+    function deleteFromImgArticle($id_article)
+    {
+        $this->db->deleteIntoDatabase("DELETE FROM img_article
+                                       WHERE id_article = :id_article", array(
+            ':id_article' => $id_article
+        ));
+    }
+
+    function updateImgFromArticle($id_article, $id_img)
+    {
+        $this->db->updateIntoDatabase("UPDATE img_article
+                                       SET id_img = :id_img
+                                       WHERE id_article = :id_article", array(
+            ':id_img' => $id_img,
+            ':id_article' => $id_article
+        ));
+    }
+
 }

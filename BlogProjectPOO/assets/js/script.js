@@ -16,7 +16,89 @@ $(function () {
         }
     );
     $('.readMore').on('click', searchArticle);
+    $('#update').on('click', searchUpdate);
 });
+
+function searchUpdate()
+{
+    var pattern = $(this);
+    var config =
+    {
+        url: "updatepost.php?id=" + pattern.attr('class')
+    };
+    $.ajax(config).done(displayOnUpdate).fail();
+}
+
+
+function displayOnUpdate(data)
+{
+    var dataJson = $.parseJSON(data);
+    $('#edit-basic-information2').fadeIn(1000);
+
+    $('#edit-basic-information-container2').html(
+        '<div class="blogpost clearfix">' +
+        '<div class="panel panel-default">' +
+        '<div class="panel-body narrow">' +
+        '<form action="updatepost.php" method="post" id="formUpdate" enctype="multipart/form-data">' +
+        '<label for="title">Titre</label>'+
+        '<input id="title" name="title" type="text" value="' + dataJson["title"] + '"/>' +
+        '<input type="hidden" id="articleId" name="articleId" value="' + dataJson["id"] + '"/>' +
+        '<p id="tags">' +
+        '</p>' +
+        '<p></p>' +
+        '<hr>' +
+        '<ul class="slides" id="slides2">' +
+        '</ul>' +
+        '<input type="file" name="image[]" multiple/>' +
+        '<label for="title"></label>' +
+        '<textarea id="contentArticle" type="text" name="contentArticle" cols="50" rows="3">'+ dataJson["content_article"] +'</textarea>' +
+        '<br/>' +
+        '<input type="submit" value="Update" />' +
+        '</form>' +
+        '</div>' +
+        '</div>' +
+        '</div>'
+    );
+
+    if(dataJson['image'].length > 0)
+    {
+        for (var i = 0; i < dataJson["image"].length; i++)
+        {
+            $('#slides2').append('<li>' +
+            '<img width="510" src="'+ dataJson["image"][i]["url"] +'">' +
+            '</li>');
+        }
+    }
+
+    if(dataJson['tags'].length > 0)
+    {
+        for (var x = 0; x < dataJson["tags"].length; x++)
+        {
+            $('#tags').append(
+                '<span class="btn btn-default btn-xs">' +
+                '<span class="glyphicon glyphicon-tag"></span> ' +
+                '<input name="tags[]" type="text" value="' + dataJson["tags"][x]["content_tag"] + '"/>' +
+                '<input type="hidden" name="idTag[]" value="' + dataJson["tags"][x]["id"] + '"/>' +
+                '</span>'
+            );
+        }
+    }
+
+    $('#edit-basic-information2').on("click", function(e)
+    {
+        $('#edit-basic-information2').hide();
+
+    });
+
+    $('#edit-basic-information-container2').on("click", function(e)
+    {
+        e.stopPropagation();
+
+    });
+
+
+
+}
 
 function searchArticle()
 {
@@ -46,8 +128,7 @@ function displaySingleArticle(data)
         ' ' + dataJson['username'] + ' ' +
         '<span class="glyphicon glyphicon-time"></span>' +
         ' ' + dataJson['date_article'] + '<br>' +
-        '</p><p>' +
-        '<a href="tags.php?tag=cute"><span class="btn btn-default btn-xs"><span class="glyphicon glyphicon-tag"></span> cute</span></a>' +
+        '</p><p id="tags">' +
         '</p>' +
         '<p></p>' +
         '<hr>' +
@@ -108,6 +189,21 @@ function displaySingleArticle(data)
             );
         }
     }
+    if(dataJson['tags'].length > 0)
+    {
+        for (var x = 0; x < dataJson["tags"].length; x++)
+        {
+            $('#tags').append(
+                '<a href="">' +
+                '<span class="btn btn-default btn-xs">' +
+                '<span class="glyphicon glyphicon-tag"></span> ' +
+                dataJson["tags"][x]["content_tag"] +
+                '</span>' +
+                '</a>'
+            );
+        }
+    }
+
 
     $('.flexslider').flexslider(
         {
@@ -120,6 +216,7 @@ function displaySingleArticle(data)
     $('#edit-basic-information').on("click", function(e)
     {
         $('#edit-basic-information').hide();
+        window.location = "post.php";
 
     });
 
@@ -168,7 +265,7 @@ function addComment(event)
 function addCommentSuccess(data)
 {
     var dataJson = $.parseJSON(data);
-
+    $('#content_comment').val('');
     $('#row').prepend(
         '<blockquote>' +
         '<p>' +

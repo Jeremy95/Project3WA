@@ -64,12 +64,36 @@ class Article
         return $res;
     }
 
+    function deleteArticle($id_article)
+    {
+        $bool = $this->db->deleteIntoDatabase("DELETE FROM article WHERE id = :id_article",array(
+            ':id_article' => $id_article
+        ));
+
+        if($bool != 0)
+            return true;
+        else
+            return false;
+    }
+
 
     function setImgsInArticle($id_article, $id_img)
     {
         $this->db->insertIntoDatabase("INSERT INTO img_article (id_img, id_article)
                                        VALUES (:id_img, :id_article)", array(
             ':id_img' => $id_img,
+            ':id_article' => $id_article
+        ));
+    }
+
+    function updateAnArticle($id_article, $title_article, $content_article)
+    {
+        $this->db->updateIntoDatabase("UPDATE article
+                                       SET content_article = :content_article,
+                                       title = :title
+                                       WHERE id = :id_article", array(
+            ':content_article' => $content_article,
+            ':title' => $title_article,
             ':id_article' => $id_article
         ));
     }

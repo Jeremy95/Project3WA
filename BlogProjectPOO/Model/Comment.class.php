@@ -35,7 +35,7 @@ class Comment
     function setComment($id_article, $content_comment, $id_user)
     {
         $id = $this->db->insertIntoDatabase("INSERT INTO comment(content_comment, id_user, id_article)
-                                       VALUES (:content_comment, :id_user, :id_article)", array(
+                                             VALUES (:content_comment, :id_user, :id_article)", array(
             ':content_comment' => htmlentities($content_comment),
             ':id_user' => $id_user,
             ':id_article' => $id_article
@@ -45,5 +45,13 @@ class Comment
             return $id;
         else
             return false;
+    }
+
+    function deleteCommentWithoutArticle($id_article)
+    {
+        $this->db->deleteIntoDatabase("DELETE FROM comment
+                                       WHERE id_article = :id_article", array(
+            ':id_article' => $id_article
+        ));
     }
 } 

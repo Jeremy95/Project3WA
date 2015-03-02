@@ -13,7 +13,7 @@ class DatabaseHelper
 
     public function __construct()
     {
-        $this->path = new PDO("mysql:host=localhost; dbname=blog", "root", "troiswa");
+        $this->path = new PDO("mysql:host=localhost; dbname=blog", "root", "root");
         $this->path->exec("SET NAMES UTF8");
         $this->path->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
@@ -50,5 +50,33 @@ class DatabaseHelper
             echo "L'insertion a échoué : ".$e->getMessage()."\n";
             return false;
         }
+    }
+
+    public function deleteIntoDatabase($query, $data)
+    {
+        $query = $this->path->prepare($query);
+        $bool = $query->execute($data);
+
+        if($bool != 0)
+            return true;
+        else
+            return false;
+
+    }
+
+    public function  updateIntoDatabase($query, $data)
+    {
+        $query = $this->path->prepare($query);
+        $bool = $query->execute($data);
+
+        if($bool != 0)
+            return true;
+        else
+            return false;
+    }
+
+    public function location($path)
+    {
+        header('Location: '.$path.'');
     }
 }

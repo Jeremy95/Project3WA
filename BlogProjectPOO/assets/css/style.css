@@ -3,7 +3,7 @@ body
     padding-top: 60px;
 }
 
-#edit-basic-information
+#edit-basic-information, #edit-basic-information2
 {
     position: fixed;
     z-index: 999;
@@ -16,7 +16,7 @@ body
     overflow: scroll;
 }
 
-#edit-basic-information-container
+#edit-basic-information-container, #edit-basic-information-container2
 {
     width: 720px;
     min-height: 552.8px;
@@ -35,6 +35,11 @@ body
 .blogpost
 {
     width: 610px;
+}
+
+.pull-right
+{
+    cursor: pointer;
 }
 
 

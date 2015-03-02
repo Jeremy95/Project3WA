@@ -21,9 +21,11 @@ if(array_key_exists('id', $_SESSION))
         $article = new Article();
         $images = new Image();
         $comment = new Comment();
+        $tag = new Tag();
         $oneArticle = $article->getArticle($_GET["id"]);
         $oneArticle["image"] = $images->getImgForArticle($_GET["id"]);
         $oneArticle["commentary"] = $comment->getCommentForAnArticle($_GET['id']);
+        $oneArticle["tags"] = $tag->getTagForArticle($_GET['id']);
         die(json_encode($oneArticle));
     }
     else if(isset($_POST["content_comment"]))

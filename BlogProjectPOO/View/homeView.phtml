@@ -10,6 +10,12 @@
                             <a id="<?= $value["id"]; ?>" class="readMore">
                                 <span class="pull-right"><span class="glyphicon glyphicon-comment"></span> Comment [<?= sizeof($value["commentary"]); ?>]</span>
                             </a>
+                            <a class="<?=$value["id"]; ?>" id="delete" href="deletepost.php?id=<?=$value["id"]; ?>">
+                                Delete
+                            </a>
+                            <a class="<?=$value["id"]; ?>" id="update">
+                                Update
+                            </a>
                             <span class="glyphicon glyphicon-user"></span>
                             <?= $value['username']; ?>
                             <span class="glyphicon glyphicon-time"></span>
@@ -64,6 +70,12 @@
 
 <div id="edit-basic-information">
     <div id="edit-basic-information-container">
+
+    </div>
+</div>
+
+<div id="edit-basic-information2">
+    <div id="edit-basic-information-container2">
 
     </div>
 </div>
