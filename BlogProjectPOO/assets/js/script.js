@@ -16,15 +16,14 @@ $(function () {
         }
     );
     $('.readMore').on('click', searchArticle);
-    $('#update').on('click', searchUpdate);
+    $('.update').on('click', searchUpdate);
 });
 
 function searchUpdate()
 {
-    var pattern = $(this);
     var config =
     {
-        url: "updatepost.php?id=" + pattern.attr('class')
+        url: "updatepost.php?id=" + $(this).attr('id')
     };
     $.ajax(config).done(displayOnUpdate).fail();
 }

@@ -60,11 +60,11 @@ if(array_key_exists('id', $_SESSION))
 
         $articlesDisplay = $article->getArticle(false, $min, $max);
         $count = $article->countArticle() / $max;
-        foreach($articlesDisplay as &$value)
+        for($i=0; $i<sizeof($articlesDisplay); $i++)
         {
-            $value["image"] = $images->getImgForArticle($value["id"]);
-            $value["commentary"] = $comment->getCommentForAnArticle($value['id']);
-            $value["tags"] = $tag->getTagForArticle($value["id"]);
+            $articlesDisplay[$i]["image"] = $images->getImgForArticle($articlesDisplay[$i]["id"]);
+            $articlesDisplay[$i]["commentary"] = $comment->getCommentForAnArticle($articlesDisplay[$i]['id']);
+            $articlesDisplay[$i]["tags"] = $tag->getTagForArticle($articlesDisplay[$i]["id"]);
         }
 
         include_once "View/headView.phtml";
