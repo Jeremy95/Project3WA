@@ -278,9 +278,6 @@ function addCommentSuccess(data)
         '</footer>' +
         '</blockquote>'
     );
-
-
-
 }
 
 

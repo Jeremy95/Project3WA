@@ -1,0 +1,27 @@
+.row:before
+{
+    display: none;
+}
+
+.row:after
+{
+    display: none;
+}
+
+body
+{
+    padding-top: 70px;
+}
+
+.product-overlay
+{
+    background: none repeat scroll 0 0 #fe980f;
+    text-align: center;
+    margin-left: 13%;
+    position: absolute;
+    width: 65%;
+    top: 0;
+    height: 100%;
+    z-index: 3;
+    display: none;
+}

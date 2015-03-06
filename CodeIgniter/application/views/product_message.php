@@ -1,1 +1,0 @@
-<h2>Produit numero <?= $id ?></h2>
