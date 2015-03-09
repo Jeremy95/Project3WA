@@ -3,6 +3,12 @@
 class User extends CI_Controller {
 
 
+    public function __construct()
+    {
+        parent::__construct();
+        session_start();
+    }
+
     public function index()
     {
         $this->load->view('welcome_message');
@@ -19,8 +25,9 @@ class User extends CI_Controller {
             {
                 if($this->User_model->userConnection($_POST["InputName"], $_POST["InputPwd"]))
                 {
-                    session_start();
                     $_SESSION['name'] = $_POST['InputName'];
+                    $_SESSION['cart'] = array();
+
                     redirect("/product");
                 }
                 else
@@ -45,10 +52,32 @@ class User extends CI_Controller {
 
     public function logout()
     {
-        session_start();
         $_SESSION = array();
         session_destroy();
         redirect("/user/login");
+    }
+
+    public function getCart()
+    {
+        $this->load->model('Image_model', "", true);
+
+        $this->load->view('head');
+        $this->load->view('cart');
+        $this->load->view('footer');
+
+    }
+
+    public function search($pattern)
+    {
+        $this->load->model("Product_model", "", true);
+        $res = $this->Product_model->getProductBySearch($pattern);
+
+
+        $json = json_encode($res);
+
+        echo $json;
+
+
     }
 
     public function register()
@@ -83,6 +112,20 @@ class User extends CI_Controller {
             'message' => $message
         ));
         $this->load->view('footer');
+    }
+
+    public function addCart($id)
+    {
+        if(!empty($id))
+        {
+            $this->load->model('Product_model', "", true);
+            $product = $this->Product_model->getProductById($id);
+
+            $_SESSION['cart'][] = $product;
+
+
+            redirect("/user/getCart");
+        }
     }
 }
 

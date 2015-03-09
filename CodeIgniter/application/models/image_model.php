@@ -17,7 +17,7 @@ class Image_model extends CI_Model
             return false;
     }
 
-    public function getAllImg($idProduct)
+    public function getAllImgByIdProduct($idProduct)
     {
         $sql = "SELECT *
                 FROM images

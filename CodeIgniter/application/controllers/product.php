@@ -10,7 +10,7 @@ class Product extends CI_Controller
 
         for($i=0; $i<sizeof($product); $i++)
         {
-            $product[$i]["image"] = $this->Image_model->getAllImg($product[$i]["id_products"]);
+            $product[$i]["image"] = $this->Image_model->getAllImgByIdProduct($product[$i]["id_products"]);
         }
 
         session_start();

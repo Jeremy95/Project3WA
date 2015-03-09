@@ -26,18 +26,18 @@
         <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <?php if(isset($_SESSION)) : ?>
-                <?php if(array_key_exists("name", $_SESSION)) : ?>
-                    <li>
-                        <a href="">
-                            Bienvenue
-                            <?= $_SESSION["name"]; ?>
-                        </a>
-                    </li>
-                <?php else : ?>
-                    <li>
-                        <a href=<?= site_url("/user/login"); ?>>Login</a>
-                    </li>
-                <?php endif; ?>
+                    <?php if(array_key_exists("name", $_SESSION)) : ?>
+                        <li>
+                            <a href=<?= site_url("/product")?>>
+                                Bienvenue
+                                <?= $_SESSION["name"]; ?>
+                            </a>
+                        </li>
+                    <?php else : ?>
+                        <li>
+                            <a href=<?= site_url("/user/login"); ?>>Login</a>
+                        </li>
+                    <?php endif; ?>
                 <?php endif; ?>
                 <li>
                     <a href="#">About</a>
@@ -49,13 +49,25 @@
                     <a href="#">Contact</a>
                 </li>
                 <?php if(isset($_SESSION)) : ?>
-                <?php if(array_key_exists("name", $_SESSION)) : ?>
-                <li>
-                    <a href=<?= site_url("/user/logout")?>>Logout</a>
-                </li>
+                    <?php if(array_key_exists("cart", $_SESSION)) : ?>
+                        <li>
+                            <a href=<?= site_url("/user/getCart")?>>My cart</a>
+                        </li>
+                    <?php endif; ?>
                 <?php endif; ?>
+                <?php if(isset($_SESSION)) : ?>
+                    <?php if(array_key_exists("name", $_SESSION)) : ?>
+                        <li>
+                            <a href=<?= site_url("/user/logout")?>>Logout</a>
+                        </li>
+                    <?php endif; ?>
                 <?php endif; ?>
             </ul>
+            <form id="searchProduct" action="" class="navbar-form navbar-right inline-form">
+                <div class="form-group">
+                    <input name="pattern" id="pattern" type="search" class="input-sm form-control" placeholder="Recherche">
+                </div>
+            </form>
         </div>
         <!-- /.navbar-collapse -->
     </div>

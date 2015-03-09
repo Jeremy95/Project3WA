@@ -11,7 +11,7 @@
                             <div class="overlay-content">
                                 <h2><?= $value["prix_products"]; ?> €</h2>
                                 <p><?= $value["name_products"]; ?></p>
-                                <a class="btn btn-default add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                <a class="btn btn-default add-to-cart" href=<?= site_url("/user/addCart/".$value["id_products"]); ?>><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div>
                         </div>
                         <?php if(sizeof($value["image"]) > 0) : ?>
@@ -19,14 +19,9 @@
                         <?php endif; ?>
                         <h2><?= $value["prix_products"]; ?> €</h2>
                         <p><?= $value["name_products"]; ?></p>
+                        <p><?= $value["description_products"]; ?></p>
                         <a class="btn btn-default add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
-                </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -34,3 +29,8 @@
 </div>
 
 <?php endif; ?>
+
+<div id="resultSearch">
+
+</div>
+

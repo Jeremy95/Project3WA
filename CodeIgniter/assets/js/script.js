@@ -20,7 +20,76 @@ $(function(){
     $('.display-overlay').on("mouseleave", function(){
         $('.product-overlay', $(this)).slideUp(500);
     });
+
+    $('#pattern').on('keyup', searchProduct);
 });
+
+function searchProduct()
+{
+    console.log("salut");
+    var pattern = $(this).val();
+
+    var config =
+    {
+        url : BASE_URL + "/user/search/" + pattern
+    };
+    $.ajax(config).done(displayProduct).fail();
+}
+
+function displayProduct(data)
+{
+    try
+    {
+        var dataJSON = $.parseJSON(data);
+    }
+    catch (e)
+    {
+        var dataJSON = [];
+    }
+
+
+    $('#resultSearch').empty();
+
+    for (var i = 0; i < dataJSON.length; i++)
+    {
+        $('#resultSearch').append(
+            '<div class="col-sm-4 display-overlay">' +
+            '<div class="product-image-wrapper">' +
+            '<div class="single-products">' +
+            '<div class="productinfo text-center">' +
+            '<div class="product-overlay">' +
+            '<div class="overlay-content">' +
+            '<h2>'
+            + dataJSON[i]["prix_products"] + '€' +
+            '</h2>' +
+            '<p>'
+            + dataJSON[i]["name_products"] +
+            '</p>' +
+            '<a class="btn btn-default add-to-cart" href="#">' +
+            '<i class="fa fa-shopping-cart"></i>Add to cart</a>' +
+            '</div>' +
+            '</div>' +
+            '<img alt="" src="' + BASE_URL.replace("index.php", "") + dataJSON[i]["url_images"] + '">' +
+            '<h2>'
+            + dataJSON[i]["prix_products"] + '€'+
+            '</h2>' +
+            '<p>'
+            + dataJSON[i]["name_products"] +
+            '</p>' +
+            '<p>'
+            + dataJSON[i]["description_products"] +
+            '</p>' +
+            '<a class="btn btn-default add-to-cart" href="' + BASE_URL + "/user/addCart/" + dataJSON[i]["id_products"] + '">' +
+            '<i class="fa fa-shopping-cart"></i>Add to cart</a>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>'
+        );
+    }
+
+}
+
 
 /*function addProduct(event)
 {
