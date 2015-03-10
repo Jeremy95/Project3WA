@@ -3,9 +3,10 @@
 <head lang="en">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
     <title>Mon Site e-commerce</title>
 </head>
 <body>
@@ -42,9 +43,13 @@
                 <li>
                     <a href="#">About</a>
                 </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
+                <?php if(isset($_SESSION)) : ?>
+                    <?php if(array_key_exists("cart", $_SESSION)) : ?>
+                        <li>
+                            <a href=<?= site_url("/product/add"); ?>>Add product</a>
+                        </li>
+                    <?php endif; ?>
+                <?php endif; ?>
                 <li>
                     <a href="#">Contact</a>
                 </li>

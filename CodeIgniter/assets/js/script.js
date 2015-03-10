@@ -14,6 +14,15 @@ $(function(){
             controlNav: false
         }
     );
+    $('#addComment').on("submit", addComment);
+    $('#pattern').autocomplete({
+        source: BASE_URL + "/user/search",
+        select: function(event, ui){
+
+            window.location = BASE_URL + "/product/detail/" + ui.item.id_products;
+        }
+    });
+
     $('.display-overlay').on("mouseenter", function(){
         $('.product-overlay', $(this)).slideDown(500);
     });
@@ -21,74 +30,109 @@ $(function(){
         $('.product-overlay', $(this)).slideUp(500);
     });
 
-    $('#pattern').on('keyup', searchProduct);
+    calculTotal();
+    $('.quantity').on('keyup', function ()
+    {
+        if($(this).val() != "")
+        {
+            var id = this.dataset.id;
+            var res;
+            var priceCartItem = parseInt($('.priceCartItem[data-id='+ id +'] strong').html());
+            res = $(this).val() * priceCartItem;
+            $('.totalCartItem[data-id='+ id +'] strong').html(res + " €");
+        }
+        else
+        {
+            $('.totalCartItem[data-id='+ id +'] strong').html(parseInt($('.priceCartItem[data-id='+ id +'] strong').html()) + " €");
+        }
+
+        calculTotal();
+
+    });
+    $('.quantity').on('click', function ()
+    {
+        if($(this).val() != "")
+        {
+            var id = this.dataset.id;
+            var res;
+            var priceCartItem = parseInt($('.priceCartItem[data-id='+ id +'] strong').html());
+            res = $(this).val() * priceCartItem;
+            $('.totalCartItem[data-id='+ id +'] strong').html(res + " €");
+        }
+        else
+        {
+            $('.totalCartItem[data-id='+ id +'] strong').html(parseInt($('.priceCartItem[data-id='+ id +'] strong').html()) + " €");
+        }
+
+        calculTotal();
+
+    });
 });
 
-function searchProduct()
+function calculTotal()
 {
-    console.log("salut");
-    var pattern = $(this).val();
-
-    var config =
+    var result = 0;
+    $('.totalCartItem strong').each(function()
     {
-        url : BASE_URL + "/user/search/" + pattern
+        result += parseInt($(this).html());
+
+    });
+    $('#totalCart strong').html(result + " €");
+}
+
+
+function addComment(event)
+{
+    event.preventDefault();
+
+    var postValues =
+    {
+        content_comment : $('#content_comment').val(),
+        IdUser : $('#IdUser').val(),
+        productId : $('#productId').val()
     };
-    $.ajax(config).done(displayProduct).fail();
+
+    $('.alert-danger').hide();
+
+    if(postValues.content_comment == "")
+    {
+        $('.alert-danger').html("Veuillez remplir le champ avant d'envoyé");
+    }
+    else
+    {
+        var config =
+        {
+            url: BASE_URL + "/product/addComment",
+            type: "POST",
+            data: postValues
+        };
+
+        $.ajax(config).done(addCommentSuccess);
+    }
 }
 
-function displayProduct(data)
+function addCommentSuccess(data)
 {
-    try
-    {
-        var dataJSON = $.parseJSON(data);
-    }
-    catch (e)
-    {
-        var dataJSON = [];
-    }
-
-
-    $('#resultSearch').empty();
-
-    for (var i = 0; i < dataJSON.length; i++)
-    {
-        $('#resultSearch').append(
-            '<div class="col-sm-4 display-overlay">' +
-            '<div class="product-image-wrapper">' +
-            '<div class="single-products">' +
-            '<div class="productinfo text-center">' +
-            '<div class="product-overlay">' +
-            '<div class="overlay-content">' +
-            '<h2>'
-            + dataJSON[i]["prix_products"] + '€' +
-            '</h2>' +
-            '<p>'
-            + dataJSON[i]["name_products"] +
-            '</p>' +
-            '<a class="btn btn-default add-to-cart" href="#">' +
-            '<i class="fa fa-shopping-cart"></i>Add to cart</a>' +
-            '</div>' +
-            '</div>' +
-            '<img alt="" src="' + BASE_URL.replace("index.php", "") + dataJSON[i]["url_images"] + '">' +
-            '<h2>'
-            + dataJSON[i]["prix_products"] + '€'+
-            '</h2>' +
-            '<p>'
-            + dataJSON[i]["name_products"] +
-            '</p>' +
-            '<p>'
-            + dataJSON[i]["description_products"] +
-            '</p>' +
-            '<a class="btn btn-default add-to-cart" href="' + BASE_URL + "/user/addCart/" + dataJSON[i]["id_products"] + '">' +
-            '<i class="fa fa-shopping-cart"></i>Add to cart</a>' +
-            '</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>'
-        );
-    }
-
+    var dataJson = $.parseJSON(data);
+    console.log(dataJson);
+    $('#content_comment').val('');
+    $('#comments').prepend(
+        '<div id="row" class="row well">' +
+        '<blockquote>' +
+        '<p>' +
+        dataJson["content_comments"] +
+        '</p>' +
+        '<footer>' +
+        '<span class="glyphicon glyphicon-user"></span>' +
+        ' ' + dataJson["name_user"] + ' ' +
+        '<span class="glyphicon glyphicon-time"></span>' +
+        ' ' + dataJson["date_comments"] +
+        '</footer>' +
+        '</blockquote>' +
+        '</div>'
+    );
 }
+
 
 
 /*function addProduct(event)

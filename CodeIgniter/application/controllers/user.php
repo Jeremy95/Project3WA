@@ -23,9 +23,11 @@ class User extends CI_Controller {
         {
             if($_POST["InputName"] != "" && $_POST["InputPwd"]!= "")
             {
-                if($this->User_model->userConnection($_POST["InputName"], $_POST["InputPwd"]))
+                $user = $this->User_model->userConnection($_POST["InputName"], $_POST["InputPwd"]);
+                if($user != false)
                 {
-                    $_SESSION['name'] = $_POST['InputName'];
+                    $_SESSION['name'] = $user['name_user'];
+                    $_SESSION['id'] = $user['id_user'];
                     $_SESSION['cart'] = array();
 
                     redirect("/product");
@@ -50,6 +52,13 @@ class User extends CI_Controller {
 
     }
 
+    public function removeCart($id)
+    {
+        array_splice($_SESSION['cart'], $id, 1);
+
+        redirect("/user/getCart");
+    }
+
     public function logout()
     {
         $_SESSION = array();
@@ -67,10 +76,10 @@ class User extends CI_Controller {
 
     }
 
-    public function search($pattern)
+    public function search()
     {
         $this->load->model("Product_model", "", true);
-        $res = $this->Product_model->getProductBySearch($pattern);
+        $res = $this->Product_model->getProductBySearch($_GET["term"]);
 
 
         $json = json_encode($res);

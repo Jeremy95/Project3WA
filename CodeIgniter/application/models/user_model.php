@@ -49,7 +49,7 @@ class User_model extends CI_Model {
 
     public function userConnection($name, $password)
     {
-        $sql = "SELECT name_user, password_user
+        $sql = "SELECT name_user, password_user, id_user
                 FROM users
                 WHERE name_user = ?";
 
@@ -62,7 +62,7 @@ class User_model extends CI_Model {
 
             if(password_verify($password, $user["password_user"]))
             {
-                return true;
+                return $user;
             }
 
             return false;

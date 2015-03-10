@@ -1,27 +1,29 @@
 <div>
     <?php if(isset($products)) : ?>
 
-    <a href=<?= site_url("/product/add"); ?>>Add product</a>
     <?php foreach($products as $value) : ?>
-        <div class="col-sm-4 display-overlay">
-            <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-                        <div class="product-overlay">
-                            <div class="overlay-content">
-                                <h2><?= $value["prix_products"]; ?> €</h2>
-                                <p><?= $value["name_products"]; ?></p>
-                                <a class="btn btn-default add-to-cart" href=<?= site_url("/user/addCart/".$value["id_products"]); ?>><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                            </div>
+        <div class="owl-item" style="width: 293px;">
+            <div class="item">
+                <div class="product">
+                    <div class="image">
+                        <div class="quickview">
+                            <a data-toggle="modal" data-target="#product-details-modal" class="btn btn-xs  btn-quickview" title="Quick View">
+                                Quick View
+                            </a>
                         </div>
-                        <?php if(sizeof($value["image"]) > 0) : ?>
-                            <img alt="" src="<?= base_url().$value["image"][0]["url_images"]; ?>">
-                        <?php endif; ?>
-                        <h2><?= $value["prix_products"]; ?> €</h2>
-                        <p><?= $value["name_products"]; ?></p>
-                        <p><?= $value["description_products"]; ?></p>
-                        <a class="btn btn-default add-to-cart" href="#"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        <a href="product-details.html">
+                            <?php if(sizeof($value["image"]) > 0) : ?>
+                                <img class="img-responsive" alt="img" src="<?= base_url().$value["image"][0]["url_images"]; ?>">
+                            <?php endif; ?>
+                        </a>
+                        <div class="promotion"> <span class="new-product"> NEW</span> <span class="discount">15% OFF</span> </div>
                     </div>
+                    <div class="description">
+                        <h4><a href="product-details.html"><?= $value["name_products"]; ?></a></h4>
+                        <p><?= $value["description_products"]; ?> </p>
+                        <span class="size">XL / XXL / S </span> </div>
+                    <div class="price"> <span><?= $value["prix_products"]; ?></span> </div>
+                    <div class="action-control"> <a href=<?= site_url("/user/addCart/".$value["id_products"]); ?> class="btn btn-primary"> <span class="add2cart"><i class="glyphicon glyphicon-shopping-cart"> </i> Add to cart </span> </a> </div>
                 </div>
             </div>
         </div>

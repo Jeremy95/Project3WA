@@ -2,6 +2,12 @@
 
 class Product extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        session_start();
+    }
+
     public function index()
     {
         $this->load->model('Product_model', "", true);
@@ -13,7 +19,6 @@ class Product extends CI_Controller
             $product[$i]["image"] = $this->Image_model->getAllImgByIdProduct($product[$i]["id_products"]);
         }
 
-        session_start();
         $this->load->view('head');
         $this->load->view('home', array(
             'products' => $product
@@ -72,5 +77,37 @@ class Product extends CI_Controller
             'message' => $message
         ));
         $this->load->view('footer');
+    }
+
+    public function detail($idProduct)
+    {
+        $this->load->model("Product_model", "", true);
+        $product = $this->Product_model->getProductById($idProduct);
+        $comment = $this->Product_model->getCommentsByIdProduct($idProduct);
+        $product["commentary"] = $comment;
+
+        $this->load->view('head');
+        $this->load->view('detail_product', array(
+            'product' => $product
+        ));
+        $this->load->view('footer');
+    }
+
+    public function addComment()
+    {
+        $this->load->model("Product_model", "", true);
+        $id_comment = $this->Product_model->addComment($_POST["content_comment"], $_POST["IdUser"], $_POST["productId"]);
+
+        $reponse = null;
+        if($id_comment != false)
+        {
+            $this->Product_model->updateCommentProduct($_POST["productId"]);
+            $reponse = $this->Product_model->getCommentsByIdProduct($_POST["productId"]);
+            $lastComment = array_pop($reponse);
+
+            $json = json_encode($lastComment);
+
+            echo $json;
+        }
     }
 }
