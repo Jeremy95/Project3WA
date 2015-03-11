@@ -34,13 +34,6 @@ class Product_model extends CI_Model
         return $res;
     }
 
-    public function updateCommentProduct($idProduct)
-    {
-        $this->db->query("UPDATE products
-                         SET id_comment_products = ?
-                         WHERE id_products = ?", array($this->db->insert_id(), $idProduct));
-    }
-
     public function addComment($comment, $idUser, $idProduct)
     {
         $sql = "INSERT INTO comments(content_comments, id_user_comments, id_product_comments)
@@ -51,13 +44,29 @@ class Product_model extends CI_Model
         return $this->db->insert_id();
     }
 
+    public function getCommentById($id)
+    {
+        $sql = "SELECT *
+                FROM comments
+                JOIN users
+                ON comments.id_user_comments = users.id_user
+                WHERE comments.id_comments = ?
+                ORDER BY comments.date_comments DESC";
+
+        $query = $this->db->query($sql, array($id));
+        $res = $query->row_array();
+
+        return $res;
+    }
+
     public function getCommentsByIdProduct($idProduct)
     {
         $sql = "SELECT *
                 FROM comments
                 JOIN users
                 ON comments.id_user_comments = users.id_user
-                WHERE comments.id_product_comments = ?";
+                WHERE comments.id_product_comments = ?
+                ORDER BY comments.date_comments DESC";
 
         $query = $this->db->query($sql, array($idProduct));
         $res = array();
@@ -76,6 +85,51 @@ class Product_model extends CI_Model
                 VALUES (?, ?, ?)";
 
         $this->db->query($sql, array($productName, $productDescription, $productPrice));
+
+        $id = $this->db->insert_id();
+
+        if($id)
+            return $id;
+        else
+            return false;
+    }
+
+    public function setOrder($idCustomer, $total)
+    {
+        $sql = "INSERT INTO orders(id_customer_orders, total_orders)
+                VALUES (?, ?)";
+
+        $this->db->query($sql, array($idCustomer, $total));
+
+        $id = $this->db->insert_id();
+
+        if($id)
+            return $id;
+        else
+            return false;
+    }
+
+    public function setOrderDetails($idOrder, $idProduct, $quantityOrder)
+    {
+        $sql = "INSERT INTO order_details(id_orders_order_details, id_product_order_details, quantity_order_details)
+                VALUES (?, ?, ?)";
+
+        $this->db->query($sql, array($idOrder, $idProduct, $quantityOrder));
+
+        $id = $this->db->insert_id();
+
+        if($id)
+            return $id;
+        else
+            return false;
+    }
+
+    public function setCustomer($name, $firstName, $birthdate, $address, $country = null, $city = null)
+    {
+        $sql = "INSERT INTO customers(name_customers, firstname_customers, birthdate_customers, city_customers, country_customers, address_customers)
+                VALUES (?, ?, ?, ?, ?, ?)";
+
+        $this->db->query($sql, array($name, $firstName, $birthdate, $city, $country, $address));
 
         $id = $this->db->insert_id();
 

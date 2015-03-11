@@ -3,6 +3,7 @@
  */
 
 const BASE_URL = "/Project3WA/CodeIgniter/index.php";
+const ASSETS_URL = "/Project3WA/CodeIgniter/";
 
 $(function(){
     $('#tableProduct').fadeIn(1000);
@@ -14,7 +15,22 @@ $(function(){
             controlNav: false
         }
     );
+    $('#content').fadeIn(1000);
+    $('#birthdate').datepicker({
+        dateFormat : "yy-mm-dd",
+        changeYear : true,
+        yearRAnge : "-50:0",
+        changeMonth : true
+    });
     $('#addComment').on("submit", addComment);
+    /*$('#addInfoUser').on("submit", verifForm);*/
+    $.ui.autocomplete.prototype._renderItem = function( ul, item ) {
+        return $( "<li>" )
+            .attr( "data-value", item.value )
+            .append("<img style='width:30px; height: 30px' src='"+ ASSETS_URL + item.url_images +"'>")
+            .append(item.label)
+            .appendTo( ul );
+    };
     $('#pattern').autocomplete({
         source: BASE_URL + "/user/search",
         select: function(event, ui){
@@ -69,8 +85,45 @@ $(function(){
     });
 });
 
+/*function verifForm(event)
+{
+    event.preventDefault();
+
+    if($('#name').val() == "" || $('#firstName').val() == "" || $('#birthdate').val() == "" || $('#address').val() == "")
+    {
+        $('#infoCustomerError').fadeIn(500);
+        $('#infoCustomerError').html("You must fill in all th fields");
+    }
+    else
+    {
+        var config =
+        {
+            url: BASE_URL + "/product/precommand"
+        };
+
+        $.ajax(config).done();
+    }
+
+
+}*/
+
 function calculTotal()
 {
+    var data = [];
+    $('.productItem').each(function()
+    {
+        var quantity = $('.quantity', $(this)).val();
+        var price = parseInt($('.priceCartItem strong', $(this)).html());
+        data.push({
+            quantity : quantity,
+            price : price
+        });
+
+    });
+
+    $('#data').val(JSON.stringify(data));
+
+
     var result = 0;
     $('.totalCartItem strong').each(function()
     {
@@ -94,8 +147,9 @@ function addComment(event)
 
     $('.alert-danger').hide();
 
-    if(postValues.content_comment == "")
+    if(postValues.content_comment.trim() == "")
     {
+        $('.alert-danger').fadeIn(500);
         $('.alert-danger').html("Veuillez remplir le champ avant d'envoyé");
     }
     else
@@ -114,7 +168,7 @@ function addComment(event)
 function addCommentSuccess(data)
 {
     var dataJson = $.parseJSON(data);
-    console.log(dataJson);
+
     $('#content_comment').val('');
     $('#comments').prepend(
         '<div id="row" class="row well">' +

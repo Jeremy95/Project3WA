@@ -1,4 +1,5 @@
 <?php if(!empty($_SESSION["cart"])) : ?>
+
     <table class="table table-hover">
         <thead>
         <tr>
@@ -67,14 +68,19 @@
                         <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
                     </button>
                 </a>
-                </td>
+            </td>
             <td>
-                <button class="btn btn-success" type="button">
-                    Checkout <span class="glyphicon glyphicon-play"></span>
-                </button></td>
+                <form action="<?= site_url("/product/precommand"); ?>" method="post">
+                    <input type="hidden" name="data" id="data"/>
+                        <button class="btn btn-success" type="submit">
+                            Checkout <span class="glyphicon glyphicon-play"></span>
+                        </button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>
+
 <?php else : ?>
     <div>
         <p>

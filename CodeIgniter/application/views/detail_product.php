@@ -20,8 +20,7 @@
     <blockquote>
         <h4>Ecrivez un commentaire...</h4>
         <form action="" method="post" id="addComment">
-            <textarea name="content_comment" id="content_comment" cols="50" rows="3">
-        </textarea>
+            <textarea name="content_comment" id="content_comment" cols="50" rows="3"></textarea>
             <input type="hidden" id="IdUser" name="IdUser" value="<?= $_SESSION["id"]; ?>" />
             <input type="hidden" id ="productId" name="productId" value="<?= $product["id_products"]; ?>"/>
             <input type="submit" value="Envoyez"/>

@@ -79,6 +79,50 @@ class Product extends CI_Controller
         $this->load->view('footer');
     }
 
+    public function precommand()
+    {
+
+        if(array_key_exists("data", $_POST))
+        {
+            $data = json_decode($_POST['data']);
+
+            for ($i = 0; $i < sizeof($_SESSION["cart"]); $i++)
+            {
+                $_SESSION['cart'][$i]["quantity"] = $data[$i]->quantity;
+            }
+
+            $this->load->view('head');
+            $this->load->view('info_user');
+            $this->load->view('footer');
+        }
+
+        if(array_key_exists("name", $_POST) && array_key_exists("firstName", $_POST) && array_key_exists("birthdate", $_POST) && array_key_exists("address", $_POST))
+        {
+            $this->load->model("Product_model", "", true);
+            $idCustomer = $this->Product_model->setCustomer($_POST["name"], $_POST["firstName"], $_POST["birthdate"], $_POST["address"], $_POST["country"], $_POST["city"]);
+
+            if($idCustomer != false)
+            {
+                $totalOrder = 0;
+
+                for($i = 0; $i < sizeof($_SESSION["cart"]); $i++)
+                {
+                    $totalOrder += intval($_SESSION["cart"][$i]["quantity"]) * intval($_SESSION["cart"][$i]["prix_products"]);
+                }
+
+                $idOrder = $this->Product_model->setOrder($idCustomer, $totalOrder);
+
+                for($i = 0; $i < sizeof($_SESSION["cart"]); $i++)
+                {
+                    $this->Product_model->setOrderDetails($idOrder, $_SESSION["cart"][$i]["id_products"], $_SESSION["cart"][$i]["quantity"]);
+                }
+
+            }
+
+            redirect("/order/recap");
+        }
+    }
+
     public function detail($idProduct)
     {
         $this->load->model("Product_model", "", true);
@@ -95,19 +139,21 @@ class Product extends CI_Controller
 
     public function addComment()
     {
-        $this->load->model("Product_model", "", true);
-        $id_comment = $this->Product_model->addComment($_POST["content_comment"], $_POST["IdUser"], $_POST["productId"]);
-
-        $reponse = null;
-        if($id_comment != false)
+        if(array_key_exists("content_comment", $_POST))
         {
-            $this->Product_model->updateCommentProduct($_POST["productId"]);
-            $reponse = $this->Product_model->getCommentsByIdProduct($_POST["productId"]);
-            $lastComment = array_pop($reponse);
+            $this->load->model("Product_model", "", true);
+            $id_comment = $this->Product_model->addComment($_POST["content_comment"], $_POST["IdUser"], $_POST["productId"]);
 
-            $json = json_encode($lastComment);
+            $reponse = null;
+            if($id_comment != false)
+            {
+                $reponse = $this->Product_model->getCommentById($id_comment);
 
-            echo $json;
+                $json = json_encode($reponse);
+
+                echo $json;
+            }
         }
+
     }
 }

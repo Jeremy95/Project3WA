@@ -1,5 +1,6 @@
 .owl-item {
     float: left;
+    margin-right: 40px;
 }
 
 .ui-autocomplete {
@@ -21,13 +22,6 @@ ul, ol {
     padding: 0;
 }
 body {
-    background: none repeat scroll 0 0 #fff;
-    color: #34495e;
-    font-family: "Source Sans Pro",sans-serif;
-    font-size: 12px;
-    line-height: 21px;
-    margin: 0;
-    padding: 0;
     position: relative;
     top: 65px;
 }
@@ -2067,6 +2061,7 @@ h1.bolder-style.dark, h1.bolder-style.dark a {
 .image a img {
     margin: 0 auto;
     max-height: 240px;
+    max-width: 320px;
     transition: all 0.5s ease 0s;
 }
 .product:hover .image a img {
