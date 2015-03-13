@@ -20,6 +20,20 @@
     <blockquote>
         <h4>Ecrivez un commentaire...</h4>
         <form action="" method="post" id="addComment">
+            <p>
+                <select name="note" id="note">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </p>
             <textarea name="content_comment" id="content_comment" cols="50" rows="3"></textarea>
             <input type="hidden" id="IdUser" name="IdUser" value="<?= $_SESSION["id"]; ?>" />
             <input type="hidden" id ="productId" name="productId" value="<?= $product["id_products"]; ?>"/>

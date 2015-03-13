@@ -39,12 +39,87 @@ $(function(){
         }
     });
 
-    $('.display-overlay').on("mouseenter", function(){
+    $('#pattern').on('keyup', function ()
+    {
+        var config =
+        {
+            url: BASE_URL + "/user/search?term=" + $(this).val()
+        };
+        $.ajax(config).done(function (data)
+        {
+            var dataJson = $.parseJSON(data);
+
+            $('#home').hide();
+
+            if($('#pattern').val() == "")
+            {
+                $('#resultSearch').hide();
+                $('#home').show();
+            }
+            else
+            {
+                $('#resultSearch').show();
+                $('#home').hide();
+            }
+
+            $('#resultSearch').empty();
+
+            for(var i = 0; i < dataJson.length; i++)
+            {
+                $('#resultSearch').append(
+                    '<div class="owl-item" style="width: 293px;">' +
+                    '<div class="item">' +
+                    '<div class="product">' +
+                    '<div class="image">' +
+                    '<div class="quickview">' +
+                    '<a data-toggle="modal" data-target="#product-details-modal" class="btn btn-xs  btn-quickview" title="Quick View">' +
+                    'Quick View' +
+                    '</a>' +
+                    '</div>' +
+                    '<a class="imgProduct" href="product-details.html">' +
+                    '</a>' +
+                    '</div>' +
+                    '<div class="description">' +
+                    '<h4><a href="product-details.html">'
+                    + dataJson[i]["name_products"] +
+                    '</a></h4>' +
+                    '<p>'
+                    + dataJson[i]["description_products"] +
+                    '</p>' +
+                    '<span class="size">XL / XXL / S </span> </div>' +
+                    '<div class="price">' +
+                    '<span>'
+                    + dataJson[i]["prix_products"] + " €" +
+                    '</span> </div>' +
+                    '<div class="action-control"> ' +
+                    '<a href="' + BASE_URL + "/user/addCart/" + dataJson[i]["id_products"] + '" class="btn btn-primary">' +
+                    '<span class="add2cart"><i class="glyphicon glyphicon-shopping-cart"> </i>' + '' +
+                    'Add to cart' +
+                    '</span>' +
+                    '</a> </div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>');
+
+                if(dataJson[i]["id_images"] != "")
+                {
+                    $('.imgProduct').append(
+                        '<img class="img-responsive" alt="img" src="' +  ASSETS_URL + dataJson[i]["url_images"] + '">'
+                    );
+                }
+            }
+
+        }).fail();
+
+
+    });
+
+    /*$('.display-overlay').on("mouseenter", function(){
         $('.product-overlay', $(this)).slideDown(500);
     });
     $('.display-overlay').on("mouseleave", function(){
         $('.product-overlay', $(this)).slideUp(500);
-    });
+    });*/
 
     calculTotal();
     $('.quantity').on('keyup', function ()
@@ -142,7 +217,8 @@ function addComment(event)
     {
         content_comment : $('#content_comment').val(),
         IdUser : $('#IdUser').val(),
-        productId : $('#productId').val()
+        productId : $('#productId').val(),
+        note : $('#note').val()
     };
 
     $('.alert-danger').hide();

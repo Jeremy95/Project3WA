@@ -143,6 +143,9 @@ class Product extends CI_Controller
         {
             $this->load->model("Product_model", "", true);
             $id_comment = $this->Product_model->addComment($_POST["content_comment"], $_POST["IdUser"], $_POST["productId"]);
+            $this->Product_model->setNote($_POST["productId"], $_POST["IdUser"], $_POST["note"]);
+            $noteAVG = $this->Product_model->AVGNotes($_POST["productId"]);
+            $this->Product_model->updateAVGNoteProduct($_POST["productId"], round($noteAVG['avgnote']));
 
             $reponse = null;
             if($id_comment != false)

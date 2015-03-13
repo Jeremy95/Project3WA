@@ -124,6 +124,43 @@ class Product_model extends CI_Model
             return false;
     }
 
+    public function AVGNotes($idProduct)
+    {
+        $sql = "SELECT AVG(content_notes) as avgnote
+                FROM notes
+                WHERE id_product_notes = ?";
+
+        $query = $this->db->query($sql, array($idProduct));
+        $res = $query->row_array();
+
+        return $res;
+    }
+
+    public function updateAVGNoteProduct($idProduct, $noteProduct)
+    {
+        $sql = "UPDATE products
+                SET note_products = ?
+                WHERE id_products = ?";
+
+        $this->db->query($sql, array($noteProduct, $idProduct));
+
+    }
+
+    public function setNote($idProduct, $idUser, $contentNote)
+    {
+        $sql = "INSERT INTO notes(id_product_notes, id_users_notes, content_notes)
+                VALUES (?, ?, ?)";
+
+        $this->db->query($sql, array($idProduct, $idUser, $contentNote));
+
+        $id = $this->db->insert_id();
+
+        if($id)
+            return $id;
+        else
+            return false;
+    }
+
     public function setCustomer($name, $firstName, $birthdate, $address, $country = null, $city = null)
     {
         $sql = "INSERT INTO customers(name_customers, firstname_customers, birthdate_customers, city_customers, country_customers, address_customers)

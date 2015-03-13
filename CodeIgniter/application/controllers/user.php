@@ -85,8 +85,6 @@ class User extends CI_Controller {
         $json = json_encode($res);
 
         echo $json;
-
-
     }
 
     public function register()

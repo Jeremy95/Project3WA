@@ -23,7 +23,7 @@
         <input name="country" type="text" class="form-control" id="country" placeholder="Enter country...">
     </div>
     <div class="form-group">
-        <label for="address">Address</label>
+        <label for="address">Shipp address</label>
         <input name="address" type="text" class="form-control" id="address" placeholder="Enter address...">
     </div>
 
