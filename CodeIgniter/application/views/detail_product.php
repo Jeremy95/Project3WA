@@ -7,7 +7,7 @@
                 </a></h2>
             <hr>
             <?php if(sizeof($product["id_img"]) > 0) : ?>
-                <img class="img-responsive" alt="img" src="<?= base_url().$product["url_images"]; ?>">
+                <img width="300" height="400" class="img-responsive" alt="img" src="<?= base_url().$product["url_images"]; ?>">
             <?php endif; ?>
             <p><?= $product["description_products"]; ?></p>
             <hr>
