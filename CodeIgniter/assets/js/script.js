@@ -199,6 +199,7 @@ function calculTotal()
     $('#data').val(JSON.stringify(data));
 
 
+
     var result = 0;
     $('.totalCartItem strong').each(function()
     {

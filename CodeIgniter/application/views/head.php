@@ -44,15 +44,26 @@
                     <a href="#">About</a>
                 </li>
                 <?php if(isset($_SESSION)) : ?>
-                    <?php if(array_key_exists("cart", $_SESSION)) : ?>
-                        <li>
-                            <a href=<?= site_url("/product/add"); ?>>Add product</a>
-                        </li>
+                    <?php if(array_key_exists("admin", $_SESSION)) : ?>
+                        <?php if($_SESSION["admin"] == true) : ?>
+                            <li>
+                                <a href=<?= site_url("/product/add"); ?>>Add product</a>
+                            </li>
+                        <?php endif; ?>
                     <?php endif; ?>
                 <?php endif; ?>
                 <li>
                     <a href="#">Contact</a>
                 </li>
+                <?php if(isset($_SESSION)) : ?>
+                    <?php if(array_key_exists("id", $_SESSION)) : ?>
+                        <?php if($_SESSION["admin"] == true) : ?>
+                            <li>
+                                <a href=<?= site_url("/order/getOrders")?>>All orders</a>
+                            </li>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                <?php endif; ?>
                 <?php if(isset($_SESSION)) : ?>
                     <?php if(array_key_exists("cart", $_SESSION)) : ?>
                         <li>

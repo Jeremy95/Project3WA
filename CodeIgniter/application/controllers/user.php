@@ -29,6 +29,10 @@ class User extends CI_Controller {
                     $_SESSION['name'] = $user['name_user'];
                     $_SESSION['id'] = $user['id_user'];
                     $_SESSION['cart'] = array();
+                    if($user["admin_user"] == 1)
+                        $_SESSION["admin"] = true;
+                    else
+                        $_SESSION["admin"] = false;
 
                     redirect("/product");
                 }
@@ -51,6 +55,7 @@ class User extends CI_Controller {
         $this->load->view('footer');
 
     }
+
 
     public function removeCart($id)
     {

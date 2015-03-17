@@ -49,7 +49,7 @@ class User_model extends CI_Model {
 
     public function userConnection($name, $password)
     {
-        $sql = "SELECT name_user, password_user, id_user
+        $sql = "SELECT name_user, password_user, id_user, admin_user
                 FROM users
                 WHERE name_user = ?";
 

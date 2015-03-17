@@ -19,11 +19,19 @@ class Product extends CI_Controller
             $product[$i]["image"] = $this->Image_model->getAllImgByIdProduct($product[$i]["id_products"]);
         }
 
-        $this->load->view('head');
-        $this->load->view('home', array(
-            'products' => $product
-        ));
-        $this->load->view('footer');
+        if(array_key_exists("id", $_SESSION))
+        {
+            $this->load->view('head');
+            $this->load->view('home', array(
+                'products' => $product
+            ));
+            $this->load->view('footer');
+        }
+        else
+        {
+            redirect("/user/login");
+        }
+
     }
 
     public function add()

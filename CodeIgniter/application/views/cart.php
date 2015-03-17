@@ -26,7 +26,7 @@
                         </div>
                     </div></td>
                 <td style="text-align: center" class="col-md-1">
-                    <input min="0" type="number" value="1" class="form-control quantity" data-id = <?= $i; ?>>
+                    <input min="0" type="number" value="" class="form-control quantity" data-id = <?= $i; ?>>
                 </td>
                 <td class="col-md-1 text-center priceCartItem" data-id = <?= $i; ?>><strong><?= $_SESSION["cart"][$i]["prix_products"]; ?> €</strong></td>
                 <td class="col-md-1 text-center totalCartItem" data-id = <?= $i; ?>><strong><?= $_SESSION["cart"][$i]["prix_products"]; ?> €</strong></td>
