@@ -20,9 +20,18 @@ class Home extends CI_Controller {
     public function index()
     {
         session_start();
-        $this->load->view('head');
-        $this->load->view('home');
-        $this->load->view('footer');
+
+        if(array_key_exists("id", $_SESSION))
+        {
+            $this->load->view('head');
+            $this->load->view('home');
+            $this->load->view('footer');
+        }
+        else
+        {
+            redirect("/user/login");
+        }
+
     }
 }
 

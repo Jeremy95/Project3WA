@@ -2,6 +2,184 @@
 body {
     padding-top: 70px;
 }
+.ui-autocomplete {
+    z-index: 9999 !important;
+}
+a {
+    color: #34495e;
+    outline: medium none !important;
+    text-decoration: none;
+    transition: all 0.2s ease-in 0s;
+}
+
+th
+{
+    text-align: inherit;
+}
+
+a:hover, a:focus {
+    cursor: pointer;
+    text-decoration: none;
+}
+ul, ol {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+body {
+    position: relative;
+    top: 65px;
+}
+
+.standard-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.standard-table caption {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 0.5em 0;
+}
+.standard-table tbody tr {
+    transition: background-color 0.25s ease 0s;
+}
+.standard-table tbody tr:nth-child(2n), .standard-table tfoot tr:nth-child(2n) {
+    background-color: #dfe5da;
+}
+.standard-table tbody tr:nth-child(2n+1), .standard-table tfoot tr:nth-child(2n+1) {
+    background-color: #babfb5;
+}
+.standard-table tbody tr:hover {
+    background-color: #998882;
+    cursor: default;
+}
+.standard-table tbody tr td, .standard-table tfoot tr th, .standard-table thead tr th {
+    padding: 0.25em 0.5em;
+}
+.standard-table tfoot tr, .standard-table thead tr {
+    color: #00968b;
+}
+.standard-table thead tr {
+    text-align: left;
+}
+.standard-table tfoot tr, .standard-table .money-column {
+    text-align: right;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Source Sans Pro",sans-serif;
+    font-weight: normal;
+    margin: 0;
+    padding-bottom: 15px;
+}
+h1 {
+    font-size: 30px;
+    line-height: 35px;
+}
+h2 {
+    font-size: 24px;
+    line-height: 28px;
+}
+h3 {
+    font-size: 20px;
+    line-height: 24px;
+}
+h4 {
+    font-size: 17px;
+    line-height: 20px;
+}
+h5 {
+    font-size: 14px;
+    line-height: 20px;
+}
+h6 {
+    font-size: 12px;
+    line-height: 20px;
+}
+p.lead {
+    font-size: 20px;
+    line-height: 1.4;
+}
+h3 code {
+    font-size: 14px;
+    font-weight: normal;
+}
+.block-title-1 {
+    display: block;
+    font-family: "Oswald",sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    margin: 15px 20px 0 0;
+    text-transform: uppercase;
+}
+.block-title-2 {
+    border-bottom: 1px solid #cecece;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0 0 15px;
+    padding: 10px 0 0;
+    position: relative;
+    text-transform: uppercase;
+}
+.block-title-3 {
+    border-bottom: 1px solid #cecece;
+    font-weight: bold;
+    margin: 0 0 15px;
+    padding: 10px 0;
+    position: relative;
+    text-transform: uppercase;
+}
+.block-title-4 {
+    display: inline;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin: 0 auto;
+    padding: 0 12px;
+    text-transform: uppercase;
+}
+.block-title-5 {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin: 0 0 5px;
+    padding: 0;
+    text-transform: uppercase;
+}
+.border-title {
+    border-bottom: 1px solid #cecece;
+    margin: 0 0 15px;
+    padding: 10px 0;
+}
+.error label.error {
+    color: red;
+}
+.section-block {
+    margin-bottom: 30px;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+.underline {
+    text-decoration: underline;
+}
+.relative {
+    position: relative;
+}
+.no-margin {
+    margin: 0 !important;
+}
+.no-padding {
+    padding: 0 !important;
+}
+.no-margin-right {
+    margin-right: 0;
+}
+.no-margin-left {
+    margin-left: 0;
+}
 .slide-image {
     width: 100%;
 }

@@ -36,7 +36,7 @@
                         <h5 id="subtotalCart"><strong><?= $_SESSION["cart"][$i]["quantity"]; ?></strong></h5>
                     </td>
                     <td class="col-md-1 text-center priceCartItem" data-id = <?= $i; ?>><strong><?= $_SESSION["cart"][$i]["prix_products"]; ?> €</strong></td>
-                    <td class="col-md-1 text-center totalCartItem" data-id = <?= $i; ?>><strong><?= $_SESSION["cart"][$i]["prix_products"]; ?> €</strong></td>
+                    <td class="col-md-1 text-center totalCartItem" data-id = <?= $i; ?>><strong><?= $_SESSION["cart"][$i]["prix_products"]*$_SESSION["cart"][$i]["quantity"]; ?> €</strong></td>
                 </tr>
             <?php endfor; ?>
             <tr>
