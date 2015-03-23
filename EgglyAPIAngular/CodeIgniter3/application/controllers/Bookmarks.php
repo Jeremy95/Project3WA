@@ -20,13 +20,43 @@ class Bookmarks extends CI_Controller {
      */
     public function index()
     {
+
         $this->load->model('Bookmarks_model', "", true);
 
-        $res = $this->Bookmarks_model->getBookmarks();
+        switch ($this->input->server('REQUEST_METHOD'))
+        {
+            case "POST":
+                $postdata = file_get_contents("php://input");
+                $postdata = (array)json_decode($postdata);
 
-        header("Content-type: application/json");
+                $this->Bookmarks_model->createBookmarks($postdata['title'], $postdata['url'], $postdata['category']);
+                break;
 
-        echo json_encode($res);
+            case "GET":
+                $res = $this->Bookmarks_model->getBookmarks();
+
+                header("Content-type: application/json");
+
+                echo json_encode($res);
+                break;
+
+            case "PUT":
+                $postdata = file_get_contents("php://input");
+                $postdata = (array)json_decode($postdata);
+
+                $this->Bookmarks_model->updateBookmarks($postdata['id'], $postdata['title'], $postdata['url']);
+                break;
+
+            case "DELETE":
+                $postdata = file_get_contents("php://input");
+                $postdata = (array)json_decode($postdata);
+
+                $this->Bookmarks_model->removeBookmarks($postdata['id']);
+                break;
+
+
+        }
 
     }
+
 }

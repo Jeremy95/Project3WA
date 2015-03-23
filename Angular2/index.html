@@ -1,0 +1,74 @@
+<html ng-app="myapp">
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+
+<input ng-model="name" type="text">
+<p>Bonjour {{name}}, il est {{time | date:'h:mm'}} et {{time | date:'ss' }} secondes</p>
+
+<button ng-click="startPromise()">Start</button>
+<p ng-if="promise.time">La promesse s'est éxécutée en {{promise.time}}</p>
+
+<script type="text/javascript">
+    angular
+            .module("myapp", [])
+            .controller("MainCtrl", function($scope, $interval, $timeout, $q) {
+                $scope.name = "Inconnu";
+                $scope.promise = {};
+
+                function updateTime()
+                {
+                    $scope.time = new Date();
+                }
+
+                updateTime();
+                $interval(updateTime, 1000);
+
+
+                function getRandomInteger(min, max)
+                {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+
+                function asyncFunc()
+                {
+                    var deferred = $q.defer();
+                    var timer = getRandomInteger(300, 2000);
+                    if (timer < 1000)
+                    {
+                        deferred.reject("An error occured");
+                    }
+                    else {
+                        $timeout(function () {
+                            deferred.resolve(timer);
+                            return timer;
+                        }, timer);
+                    }
+
+                    return deferred.promise;
+                }
+
+                function startPromise()
+                {
+                    console.log("startPromise");
+
+                    asyncFunc()
+                            .then(function (timer){
+                                $scope.promise.time = timer / 1000;
+                                console.log($scope.promise);
+                            })
+                            .catch(function (error){
+                                console.log(error);
+                            });
+                }
+
+                $scope.startPromise = startPromise;
+
+
+            });
+</script>
+</body>
+</html>

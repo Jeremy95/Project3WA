@@ -4,7 +4,7 @@ class Bookmarks_model extends CI_Model
 {
     public function getBookmarks()
     {
-        $sql = "SELECT *
+        $sql = "SELECT bookmarks.*, categories.name as category
                 FROM bookmarks
                 JOIN categories
                 ON categories.id = bookmarks.id_category";
@@ -17,5 +17,34 @@ class Bookmarks_model extends CI_Model
         }
 
         return $res;
+    }
+
+    public function createBookmarks($title, $url, $idCategory)
+    {
+        $sql = "INSERT INTO bookmarks(title, url, id_category)
+                VALUES (?, ?, ?)";
+
+        $this->db->query($sql, array($title, $url, $idCategory));
+
+        return $this->db->insert_id();
+    }
+
+    public function updateBookmarks($idBookmarks, $title, $url)
+    {
+        $sql = "UPDATE bookmarks
+                SET title = ?,
+                url = ?
+                WHERE id = ?";
+
+        $this->db->query($sql, array($title, $url, $idBookmarks));
+
+    }
+
+    public function removeBookmarks($idBookmarks)
+    {
+        $sql = "DELETE FROM bookmarks
+                WHERE id = ?";
+
+        $this->db->query($sql, array($idBookmarks));
     }
 }

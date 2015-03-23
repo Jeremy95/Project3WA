@@ -23,7 +23,7 @@ class Categories extends CI_Controller {
         $this->load->model('Categories_model', "", true);
 
 
-        $res = $this->Categories_model->getBookmarks();
+        $res = $this->Categories_model->getCategories();
 
 
         header("Content-Type : application/json");
