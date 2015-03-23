@@ -1,0 +1,28 @@
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div ng-repeat="bookmark in bookmarksCtrl.bookmarks | filter:{category:currentCategory.name}">
+        <button type="button" class="close">&times;</button>
+        <button ui-sref="eggly.categories.bookmarks.edit({bookmarkId: bookmark.id})" type="button" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
+        <a href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a>
+    </div>
+
+    <hr/>
+    <div ng-if="shouldShowCreating()">
+        <button type="button" class="btn btn-link" ng-click="startCreating()"><span class="glyphicon glyphicon-plus"></span>Create bookmark</button>
+
+        <form ng-if="states.isCreating" ng-submit="createBookmark(newBookmark)">
+            <div class="form-group">
+                <label for="title">Bookmark title</label>
+                <input type="text" class="form-control" id="title" ng-model="newBookmark.title">
+            </div>
+            <div class="form-group">
+                <label for="url">Bookmark URL</label>
+                <input type="text" class="form-control" id="url" ng-model="newBookmark.url">
+            </div>
+            <button type="submit" class="btn btn-info">Create</button>
+            <button type="button" class="btn btn-default pull-right" ng-click = cancelCreating()>Cancel</button>
+        </form>
+    </div>
+
+    <div ui-view>
+    </div>
+</div>

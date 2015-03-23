@@ -1,0 +1,13 @@
+- Include angular
+- Ajouter un ng-init="hello='world'" et un {{hello}} -> ne fonctionne pas
+- Ajouter ng-app sur le html -> fonctionne
+- créer un input avec ng-model="hello" -> two way data binding
+- créer un module ( ng-app="Eggly" )
+- dans app.js, créer un premier controller avec $scope.hello = "world"
+	-> ajouter {{hello}} dans le html
+- adans app.js, créer scope.categories et scope.bookmarks
+- avec ng-repeat, faire l'affichage sur la page
+- filter : créer $scope.currentCategory et $scope.setCurrentCategory
+- ajouter un filtre (| filter: {category:currentCategory.name})
+
+

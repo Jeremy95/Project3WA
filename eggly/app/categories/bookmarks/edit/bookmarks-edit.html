@@ -1,0 +1,15 @@
+<form ng-submit="editBookmark(editedBookmark)">
+    <div class="form-group">
+        <label for="title2">Bookmark title</label>
+        <input type="text" class="form-control" id="title2" ng-model="editedBookmark.title">
+    </div>
+    <div class="form-group">
+        <label for="url2">Bookmark URL</label>
+        <input type="text" class="form-control" id="url2" ng-model="editedBookmark.url">
+    </div>
+    <button type="submit" class="btn btn-info">Edit</button>
+    <button type="button" class="btn btn-default pull-right" ng-click = editBookmarksCtrl.cancelEditing()>Cancel</button>
+</form>
+
+
+
