@@ -7,7 +7,4 @@ application/cache/*
 application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
-<<<<<<< HEAD
 
-=======
->>>>>>> 531ab2bbd58c18d1d69c1bf2a6b5cae025ac4b6f
