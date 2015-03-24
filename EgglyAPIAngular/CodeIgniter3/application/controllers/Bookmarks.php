@@ -18,7 +18,7 @@ class Bookmarks extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see http://codeigniter.com/user_guide/general/urls.html
      */
-    public function index()
+    public function index($id = null)
     {
 
         $this->load->model('Bookmarks_model', "", true);
@@ -29,7 +29,13 @@ class Bookmarks extends CI_Controller {
                 $postdata = file_get_contents("php://input");
                 $postdata = (array)json_decode($postdata);
 
-                $this->Bookmarks_model->createBookmarks($postdata['title'], $postdata['url'], $postdata['category']);
+                $res = $this->Bookmarks_model->createBookmarks($postdata['title'], $postdata['url'], $postdata['id_category']);
+                $bookmark = $this->Bookmarks_model->getBookmarkById($res);
+
+                header("Content-type: application/json");
+
+                echo json_encode($bookmark);
+
                 break;
 
             case "GET":
@@ -48,10 +54,8 @@ class Bookmarks extends CI_Controller {
                 break;
 
             case "DELETE":
-                $postdata = file_get_contents("php://input");
-                $postdata = (array)json_decode($postdata);
 
-                $this->Bookmarks_model->removeBookmarks($postdata['id']);
+                $this->Bookmarks_model->removeBookmarks($id);
                 break;
 
 

@@ -1,24 +1,45 @@
 angular.module('models.bookmarks', [])
-    .service('BookmarksModel', function($http) {
+    .service('BookmarksModel', function($http, $q) {
         var model = this;
+        var bookmarks;
 
         model.getBookmarks = function ()
         {
-            return $http.get('http://localhost/Project3WA/EgglyAPIAngular/CodeIgniter3/index.php/Bookmarks');
+            var deferred = $q.defer();
+            if(bookmarks)
+            {
+                deferred.resolve(bookmarks);
+            }
+            else
+            {
+                $http.get('http://localhost/Project3WA/EgglyAPIAngular/CodeIgniter3/index.php/Bookmarks')
+                    .then(function(results)
+                    {
+                        bookmarks = results.data;
+                        deferred.resolve(bookmarks);
+                    })
+            }
+
+
+            return deferred.promise;
+
         };
 
-        model.postBookmarks = function ()
+        model.addBookmark = function (bookmark)
         {
-            return $http.post('http://localhost/Project3WA/EgglyAPIAngular/CodeIgniter3/index.php/Bookmarks');
+            bookmarks.push(bookmark);
         };
 
-        model.putBookmark = function ()
+        model.deleteBookmark = function (bookmark)
         {
-            return $http.put('http://localhost/Project3WA/EgglyAPIAngular/CodeIgniter3/index.php/Bookmarks/');
-        };
+            for(var i = 0; i < bookmarks.length; i++)
+            {
+                if(bookmarks[i].id == bookmark.id)
+                {
+                    bookmarks.splice(i ,1);
+                    break;
+                }
+            }
+        }
 
-        model.deleteBookmark = function ()
-        {
-            return $http.delete('http://localhost/Project3WA/EgglyAPIAngular/CodeIgniter3/index.php/Bookmarks/');
-        };
     });

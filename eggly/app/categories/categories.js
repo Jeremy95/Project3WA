@@ -21,7 +21,7 @@ angular.module('categories', ['models.categories'])
 
         CategoriesModel.getCategories().then(function (results)
         {
-            categoriesCtrl.categories = results.data;
+            categoriesCtrl.categories = results;
         });
 
     });

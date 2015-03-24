@@ -47,4 +47,18 @@ class Bookmarks_model extends CI_Model
 
         $this->db->query($sql, array($idBookmarks));
     }
+
+    public function getBookmarkById($idBookmark)
+    {
+        $sql = "SELECT bookmarks.*, categories.name as category
+                FROM bookmarks
+                JOIN categories
+                ON categories.id = bookmarks.id_category
+                WHERE bookmarks.id = ?";
+
+        $query = $this->db->query($sql, array($idBookmark));
+        $res = $query->row_array();
+
+        return $res;
+    }
 }
